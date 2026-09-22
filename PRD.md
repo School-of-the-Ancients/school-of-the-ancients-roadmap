@@ -2,7 +2,7 @@
 
 Status: proposed implementation plan, September 22, 2026. No new runtime features are claimed by this document.
 
-**Product:** historical AI mentors teach through conversation, prepared interactive exhibits, and responsive visual explanations in AR, VR, and a companion browser. Build on the working Matrix Loading Operator. Preserve the immediacy and useful experience of `sota-beta`.
+**Product:** historical AI mentors teach through conversation, prepared interactive exhibits, and responsive visual explanations in AR, VR, and a companion browser. Build on the working Matrix Loading Operator. Preserve the useful ideas and compelling moments of `sota-beta` while improving its implementation.
 
 [Organization Kanban](https://github.com/orgs/School-of-the-Ancients/projects/1) · [Delivery plan](ROADMAP.md) · [API proposal](API-CONTRACT.md) · [Current Matrix guide](https://github.com/School-of-the-Ancients/matrix-loading-operator#readme)
 
@@ -17,7 +17,7 @@ This planning repo coordinates the product vision and shared API; it does not me
 ## Product decisions from this conversation
 
 - Matrix Operator is the spatial foundation to extend. Its scene editing, voice commands, content loading, screenshots, Undo, and save/restore remain useful independently of education.
-- The user considers **sota-beta the stronger product experience and sota-v2 a failed remake**. Do not make another rewrite, feature-parity downgrade, or migration to v2 a prerequisite. Inspect both implementations before assigning future module ownership.
+- The user sees **good ideas in the older sota-beta prototype, implemented poorly; v2 did not deliver the desired improvement**. Preserve those ideas, not the Google live-voice coupling or every implementation detail. A fresh School implementation is a valid option, alongside selective reuse. Prove a small text-first standalone journey before committing to a broad rebuild or migration.
 - Everything should be modular: content, lessons, mentor identity, teaching policy, voice, character presentation, scene tools, panels, capture, and world navigation.
 - Prepare the required lesson assets in advance for the first experience. The mentor can recombine supported tools and assets when a student asks a follow-up question.
 - A PC operator may facilitate while another person wears the headset. This is valuable before networking multiple headsets.
@@ -55,7 +55,7 @@ Inspected Matrix baseline: [`adde51a`](https://github.com/School-of-the-Ancients
 
 | Area | Existing evidence | Remaining product work |
 | --- | --- | --- |
-| Matrix runtime | Typed scene edits, stable identities, placement, Rotate/Bob, Undo, saves, PC/headset control | Lesson-oriented entry point and module contracts |
+| Matrix runtime | Typed scene edits, stable identities, placement, Rotate/Bob, Undo, saves, PC/headset control | Generic external-session API/status; School owns lesson selection and teaching UI |
 | Content | Static prefab export/catalog/download/registration; actual Quest Pro same-session walkthrough | Simpler authoring, startup dependency registration, cached cold-restart acceptance; new content types need adapters |
 | Voice | Push-to-talk and transcription into reviewed scene proposals | Explicit answer/question/scene-command routing and mentor speech |
 | Learning | Authored scale activity and durable checkpoint/receipt API integrated with v2; desktop loop evidence | Headset learner input, tutor conversation, complete device lesson; target learning implementation to be selected |
@@ -65,13 +65,19 @@ Inspected Matrix baseline: [`adde51a`](https://github.com/School-of-the-Ancients
 
 Read Matrix's [Learning-Sessions](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/Docs/Learning-Sessions.md), [Visual-Feedback](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/Docs/Visual-Feedback.md), [Content-Packs](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/Docs/Content-Packs.md), and relevant validation reports for evidence boundaries. Quest Pro capture is virtual content/debug geometry, not physical-room pixels. Quest 3 camera code has not established hardware acceptance. Stored room geometry, camera imagery, and live depth/occlusion are separate capabilities.
 
-## Preserve beta before choosing the learning implementation
+## Preserve the useful ideas; choose a better School foundation
 
 The first decision gate compares the same user journey in beta, v2, and Matrix: choose a mentor/goal → converse → request a visual → interact → resume a session. Record what works, what feels better in beta, and what is absent or unreliable. Existing beta bugs remain visible; preference for beta is not a claim that all of it is production-ready.
 
-The decision must identify modules to **keep, adapt, repair, or retire**, with a reversible integration slice. Possible outcomes include extending beta through a learning adapter, extracting a useful existing service, or reusing selected v2 contracts. A new repository is justified only by independent ownership/build/release needs. A new name or version is not a reason to rewrite working features.
+The decision must identify modules to **keep, adapt, repair, or retire**, with a reversible integration slice. Possible outcomes include extending beta through a learning adapter, extracting a useful existing service, or reusing selected v2 contracts. A new repository is justified only by independent ownership/build/release needs. The user is open to starting School fresh; the decision should follow the demonstrated slice, not the age/name of the repository alone. Matrix stays the existing independent product.
 
 Matrix's current `learning.py` integration and v2 durable API are reusable evidence. Their existence does not mandate v2 as the future application. After selection, one learning implementation owns session and assessment state; adapters must not create competing progress stores. Existing saved records need explicit versioned conversion or continued support before any backend migration.
+
+## Text-first School core; voice is an adapter
+
+The [original beta rebuild issue](https://github.com/School-of-the-Ancients/sota-beta/issues/252) already calls for a text-model core with STT/TTS layered on top, separate visual generation, and explanation/example before guided practice and Socratic questioning. This is an architectural requirement to preserve, not a commitment to historical model names or a particular provider.
+
+School owns durable turns, mentor/lesson state, source context and validated tool requests. A provider's live audio session must not be the only place the lesson exists. Voice, text input, model inference, artifact generation and Matrix access are independent adapters. Optional realtime speech must use the same canonical turn/tool/record contract. The standalone acceptance journey must work with voice disabled and Matrix disconnected. See [the standalone core slice](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/13).
 
 ## Module architecture
 
@@ -96,7 +102,7 @@ Start with modules in existing repositories/processes. Modularity does not requi
 
 ### Required contract properties
 
-- Modules declare stable IDs, schema/API versions, required/optional dependencies, supported platforms, initialization/disposal, availability, and reasons for being unavailable. One capability registry extends current advertised runtime/provider capabilities.
+- Modules declare stable IDs, schema/API versions, required/optional dependencies, supported platforms, initialization/disposal, availability, and reasons for being unavailable. Matrix extends its runtime/provider capability registry; School owns its lesson/mentor requirements. The connector negotiates them without a shared application registry or synchronized deployment requirement.
 - A lesson declares exact asset versions/digests, supported tools, source/mentor/prompt versions, expected observations, and optional enrichments. Required capability absence blocks launch with a useful remedy; optional absence degrades visibly.
 - Lifecycle events carry session/turn/request/event IDs and relevant versions. Repeated/out-of-order delivery cannot duplicate a response, spawn, grade, or checkpoint fork.
 - Authored scene edits, observed simulation changes, and learning revisions remain distinct. Use #13A's ownership contract when actions/animation require it; do not invent a second executor.
@@ -124,7 +130,7 @@ flowchart LR
 
 `learner input → mentor request → proposal → approval → dispatch → acknowledged / failed / unconfirmed → observed result → mentor response`
 
-The current explicit review/Apply flow is the default. A later authored demonstration policy may authorize a finite allowlist, but it must be separately specified and retain Stop/Undo; a lesson start does not silently authorize arbitrary autonomous edits. Late responses after load, cancel, room replacement, or session change must not mutate a new session.
+The current explicit review/Apply flow is the default. A later authored demonstration policy may authorize a finite allowlist, but it must be separately specified and retain Stop/Undo; a lesson start does not silently authorize arbitrary autonomous edits. Late responses after load, cancel, room replacement, or session change must not mutate a new session. Retain and reconcile receipts for already-dispatched operations under their original identity; a disconnect does not prove rollback or erase an observed effect.
 
 Images supplement exact state. Never say the mentor “sees what the learner sees” without qualifying capture mode, field of view, time, and actual contents. Capturing alone does not invoke a model. Physical-camera permission or denial must not silently change a virtual lesson into a camera-dependent one.
 
@@ -145,8 +151,8 @@ Marinara's character/visual-artifact design inspires generated explanations; it 
 
 | Phase | Visible result | Exit gate |
 | --- | --- | --- |
-| S0 — Preserve and stabilize | Beta comparison, module decisions, dependable Matrix setup/recovery | Reviewed reuse decision; recorded baseline and outstanding hardware limits |
-| S1 — Complete authored lesson | Headset learner completes Observation and Scale with durable state | Predict → manipulate → observe → reflect → restart/restore, plus failure cases |
+| S0 — Preserve and stabilize | Beta comparison, product/API decisions, dependable Matrix setup/recovery | Reviewed reuse decision; real School deployment → paired local Matrix → receipt round trip; recorded baseline and outstanding hardware limits |
+| S1 — Standalone School and authored integration | A text-first School journey works independently; headset learner completes Observation and Scale with durable state | Actual School deployment/connector; predict → manipulate → observe → reflect → restart/restore, plus failure cases |
 | S2 — Historical mentor | Mentor discusses actual student actions and handles a related surprise question | Live-model evidence; interruptible speech/captions; same learning record; optional avatar separate |
 | S3 — Richer teaching tools | One responsive panel and one tested math/science interaction; easier content preparation | Manipulation feeds tutor evidence; creator publishes a compatible exhibit without manual provider JSON |
 | S4 — World's Fair | Browse multiple exhibits; enter VR pavilion or place AR exhibit; PC facilitation | At least two exhibits use common modules; save/resume and return navigation work |
@@ -175,7 +181,7 @@ The first product does not require a Unity replacement, arbitrary runtime code, 
 ## Repositories and source lineage
 
 - [Matrix Loading Operator](https://github.com/School-of-the-Ancients/matrix-loading-operator): independent spatial runtime/product; its own generic API and capability implementation issues remain there.
-- [sota-beta](https://github.com/School-of-the-Ancients/sota-beta): preferred product reference and candidate implementation to extend; inspect existing mentor, voice, visuals, quests, and persistence before replacing anything.
+- [sota-beta](https://github.com/School-of-the-Ancients/sota-beta): prototype ideas/experience reference and candidate code to reuse selectively; inspect existing mentor, voice, visuals, quests, and persistence before replacing anything.
 - [sota-v2](https://github.com/School-of-the-Ancients/sota-v2): reusable candidate code/contracts; current Matrix learning adapter integrates its [Operator API](https://github.com/School-of-the-Ancients/sota-v2/blob/main/docs/OPERATOR_API.md). Its [beta experience spec](https://github.com/School-of-the-Ancients/sota-v2/blob/main/docs/FRONTEND_BETA_EXPERIENCE_SPEC.md) is research input, not a renewed mandate to rebuild beta.
 - [Earlier Horizon VR project](https://github.com/School-of-the-Ancients/school-of-the-ancients-vr): Cosmos-inspired fair, mentor prompts, props and models; Horizon TypeScript requires adaptation and FBX compatibility remains to be checked.
 - [School website](https://schooloftheancients.com/): product vision; [Marinara Engine](https://github.com/Pasta-Devs/Marinara-Engine): character and visual-artifact inspiration.

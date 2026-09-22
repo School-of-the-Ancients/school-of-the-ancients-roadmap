@@ -63,18 +63,27 @@ An illustrative outcome:
   "runtimeSessionId": "runtime-example",
   "status": "succeeded",
   "commandReceiptIds": ["receipt-example"],
-  "observed": {"authoredRevision": 43, "objectId": "block-example", "scale": [2, 2, 2]},
+  "observed": {
+    "authoredRevision": 43,
+    "objectId": "block-example",
+    "assetId": "known-unit-block",
+    "coordinateFrame": "object-local",
+    "units": "metres",
+    "baselineDimensions": [0.1, 0.1, 0.1],
+    "measuredDimensions": [0.2, 0.2, 0.2],
+    "measurementMethod": "settled-mesh-bounds"
+  },
   "captureRef": null
 }
 ```
 
-The final schema must distinguish acknowledgment, measured effect, partial result, and unknown outcome. An HTTP success means neither a completed scene edit nor educational success. Field limits, event ordering, durable replay retention, and version compatibility must be specified before implementation.
+The final schema must distinguish acknowledgment, measured effect, partial result, and unknown outcome. The illustrative dimensions require an implemented measurement method and a known block; transform scale alone does not establish dimensions or volume. Derived values must declare their formula, baseline and geometry assumptions. An HTTP success means neither a completed scene edit nor educational success. Field limits, event ordering, durable replay retention, and version compatibility must be specified before implementation.
 
 ## Reliability, permissions, and privacy
 
 - Stable request/event IDs and idempotency receipts prevent duplicate actions or checkpoint forks after retries.
 - Unrelated simulation observations do not invalidate every proposal; relevant object/room/action dependency changes do. Reuse Matrix #13A instead of creating parallel revision rules.
-- A timeout after dispatch is unconfirmed, not guaranteed failure. Query/reconcile before retrying. Ignore stale callbacks after disconnect, runtime replacement, or session load.
+- A timeout after dispatch is unconfirmed, not guaranteed failure. Query/reconcile before retrying. Reject stale callbacks as current-session mutations after disconnect, runtime replacement, or session load, while retaining/reconciling final receipts of already-dispatched work under its original request/runtime identity. Disconnection does not prove rollback.
 - The initial flow retains explicit proposal review/Apply. Later finite authored automation needs a separate allowlist/policy; a conversational request does not unlock arbitrary execution.
 - Send only the data needed for the current operation. Raw room imagery is transient by default and separately authorized for model inclusion. Record capture provenance, source versions, and observation IDs rather than indiscriminately retaining frames.
 - Learner records and transcripts belong to School's existing access/export/delete policy. Matrix gets opaque correlation IDs, not unrestricted learner profiles or account tokens.
