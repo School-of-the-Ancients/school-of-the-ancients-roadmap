@@ -172,6 +172,14 @@ Detailed issue dependencies and status rules live in the [delivery plan](ROADMAP
 
 Desktop and Quest Pro can validate early lesson work. Quest 3 is the primary final room-aware target; #22A gates its room acceptance. #26 gates physical-image-dependent features only. Neither generic NPC navigation (#22B), needs, nor GOAP gates the first lesson.
 
+## Optional Matrix AI NPC community
+
+An exploratory product direction is a persistent community of distinct AI residents in Matrix. Residents may develop personal goals and reusable skills, encounter artifacts left by others, cooperate or contend for objects, and interact with human visitors. This is a generic Matrix capability under [Matrix NPC roadmap #29](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/29). School may later use an inhabited exhibit, but its mentor dialogue, curriculum and learner progress remain School-owned. It does not gate the first prepared lesson.
+
+The proposed first slice is an **isolated, deterministic fixture** with two residents, one validated shared artifact, one object interaction, a conflicting resource, observed outcomes, save/restore and replay. The runtime owns legal actions, state changes and receipts. Skills and artifacts are typed, bounded data with provenance and validator results. Residents may share them only through supported world capabilities. Optional Jev policy selection operates over legal choices; scripted utility is the fallback and baseline.
+
+Acceptance for a community claim requires a comparison with scripted and isolated-agent baselines under matched seeds and budgets, plus recorded task success, validated skill reuse, artifact lineage, invalid actions, latency/cost, failure recovery and replay. PC and Quest 3 performance each need direct evidence. [Research synthesis and primary links](RESEARCH-AI-NPC-COMMUNITY.md), [community evaluation #14](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/14) and [Jev decision study #15](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/15) define the research gates; any accepted runtime implementation is scoped in existing Matrix issues.
+
 ## Longer-term scope and exclusions
 
 The full direction includes multiple mentors/exhibits, reusable authored and adaptive curricula, learner knowledge and uploaded course material, generated diagrams/backgrounds, shared teaching, and optional believable characters. Existing beta/v2/NPC issues own those capabilities where they fit; adoption follows the reuse decision.
