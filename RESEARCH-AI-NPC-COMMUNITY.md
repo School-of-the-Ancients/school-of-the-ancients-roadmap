@@ -34,6 +34,23 @@ In their [2002 GDC Halo AI talk](https://halo.bungie.org/misc/gdc.2002.haloai/ta
 
 Do not conflate this with Halo 2: Bungie's later [Halo 2 AI paper](https://www.gamedeveloper.com/programming/gdc-2005-proceeding-handling-complexity-in-the-i-halo-2-i-ai) describes a hierarchical finite state machine / behavior DAG. For Matrix, start with the smallest state graph that handles the intended interaction; add planning or model decisions only where an authored baseline has a measured gap.
 
+## Candidate controller: state machine with an optional Jev selector
+
+Keep the finite state graph as the resident's **control contract**: named states, legal outgoing transitions, guards, interruption priorities, timeouts and completion receipts. The world computes eligibility from authoritative facts. A selector receives only the currently legal *optional* transition IDs and a compact observation; it cannot add a state, bypass a quest guard or execute the transition itself.
+
+| Layer | Responsibility | Quest-giver example |
+| --- | --- | --- |
+| World/quest service | Own verified location, quest eligibility, availability and rewards. | A required quest remains obtainable; a missing character points to an accepted fallback. |
+| Finite state graph | Maintain current state and priority transitions for player interaction, threat, cancellation and recovery. | `AtPost`, `Talking`, `ShortErrand`, `Returning`; a required quest request takes priority over an optional walk. |
+| Optional selector | Rank two or more legal, low-stakes transitions from current context and authored traits. Start with fixed priority or seeded utility; compare Jev [Choice](https://docs.typesafe.ai/primitives/choice) on the same candidates. | While idle, choose whether to greet a nearby player, comment on a recent event, or begin a short errand. |
+| Finite executor and observation | Run the accepted action, cancel safely, and publish observed success/failure. | Movement completes or times out; the NPC returns to its post and the quest marker updates. |
+
+The decision call is event-triggered or budgeted at a measured cadence. A single legal option needs no model call. If Jev is late, unavailable, low confidence, or returns an obsolete candidate after the world changes, use the deterministic utility/fixed-priority fallback. Keep the selected transition, candidate set, world version, policy version, reason/fallback and resulting receipt in replay.
+
+This can feel less repetitive than a fixed transition table because traits, local observations, recent interactions, artifact history and weighted choices affect which *legal* branch is taken. The set of capabilities is still authored and testable. New skills or artifact behaviors require validation and a versioned capability update before they become candidates. Jev is worthwhile only if it improves player-perceived coherence or task outcomes over a well-tuned utility selector enough to justify its latency, call volume and operational cost.
+
+For [evaluation #15](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/15), compare **FSM with fixed priority**, **FSM with seeded utility**, and **FSM with Jev** on identical state snapshots and player events. Hold dialogue generation constant across arms. Measure quest access, invalid/stale decisions, state thrashing, completion/interruption recovery, replay fidelity, p95 decision time, cost per resident-hour and a small blinded character-coherence rating. If the utility policy performs as well, keep it and omit Jev from that path.
+
 ## Thought experiment: an inhabited quest hub
 
 The World of Warcraft style example is a design prompt for a **Matrix-owned fictional hub**, not a request to modify WoW. A quest giver has a home location, daily routine, authored personality and recent encounter memory. When a player repeatedly asks for work, the character can express mild exasperation, mention a recent event, serve the quest, or take a short errand inside a known area. Other residents can react to that errand. The player sees where to find the quest giver and can still obtain a required quest.
