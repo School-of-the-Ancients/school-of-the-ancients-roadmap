@@ -30,6 +30,19 @@ Six repository milestones match S0–S5. They have no invented deadlines. Milest
 
 These are prioritized pulls, not a demand to complete the entire loader, every provider, or all release coursework before a bundled lesson can run. Physical-camera hardware, advanced NPCs, and Asset Store automation are separate tracks.
 
+## Optional AI NPC community research track
+
+This track can proceed alongside the ordered School lesson phases. It proposes a generic Matrix resident community and feeds the existing [Matrix NPC roadmap #29](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/29). It does not change S0–S5 exit gates or add an NPC dependency to the first teaching loop. See the [research review and source links](RESEARCH-AI-NPC-COMMUNITY.md).
+
+| Step | Outcome and gate | Issue / owner |
+| --- | --- | --- |
+| C0 — research reproduction | Reproduce a small seeded SwarmWorld fixture and compare scripted, isolated-skill and shared-artifact residents with matched budgets; publish traces, metrics and limits. | [Roadmap #14](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/14) evaluates; [Matrix #29](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/29) receives findings. |
+| C1 — bounded Matrix slice | If C0 merits it, specify and implement two persistent residents, one discoverable validated artifact, one contended object, observed receipts and replay using existing Matrix #13–#20 contracts. | Matrix #29 and its existing implementation issues own runtime work; create a scoped Matrix implementation issue only if an uncovered capability is found. |
+| C2 — policy comparison | Benchmark Jev on one legal-choice decision against scripted and generative baselines; adopt it only for a measured role with outage fallback. | [Roadmap #15](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/15) evaluates; Matrix #29 owns any integration. |
+| C3 — human-facing scene | Demonstrate a resident/artifact interaction with a human in a PC build, then measure Quest 3 separately before claiming headset readiness. | Matrix #29 / #20, with device evidence and review of action authority. |
+
+No date or phase milestone is assigned while C0 and C2 remain unmeasured.
+
 ## Dependency rules
 
 - School's standalone browser/text/voice experience and Matrix's standalone Operator must keep working if the connector or the other product is unavailable.
