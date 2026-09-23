@@ -60,6 +60,16 @@ The [original beta rebuild requirement](https://github.com/School-of-the-Ancient
 
 Beta's Study Oracle and learner-knowledge ideas, richer generated visuals, creator templates, and optional character autonomy remain part of the full idea. The plan starts with a complete lesson because it tests whether those capabilities improve learning instead of accumulating disconnected features.
 
+## Research references for agent experiences
+
+These are design references for the School mentor and Matrix's optional character/simulation track, especially [Matrix #29](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/29). They do not add implementation gates to the first prepared lesson. Evaluate their ideas against learner value, observed behavior, and the independent-product boundary before adopting an architecture.
+
+- **[TypeSafe AI documentation](https://docs.typesafe.ai/introduction)** — Typed Choice, Score, and truth-value questions over state, with confidence information. Reference for bounded agent decisions and routing; it is not a selected dependency.
+- **[Generative Agents: Interactive Simulacra of Human Behavior](https://arxiv.org/pdf/2304.03442)** — Core vision reference for a living world of believable, interacting characters. Study its memory stream, reflection, retrieval, and planning mechanisms, then test which of them improve a historical mentor or exhibit.
+- **[Simile](https://www.simile.com/) and its [research/blog](https://www.simile.com/blog)** — References for human-behavior simulation and validation. Related reading: [Social Simulacra](https://arxiv.org/abs/2208.04024), [Generative Agent Simulations of 1,000 People](https://arxiv.org/abs/2411.10109), [Finetuning LLMs for Human Behavior Prediction in Social Science Experiments](https://arxiv.org/abs/2509.05830), and [Building confidence in Simile](https://www.simile.com/blog/confidence). Use these to frame behavioral fidelity and evaluation, not to assume simulated people are accurate by appearance alone.
+- **[MiroFish](https://github.com/666ghj/MiroFish)** — Open-source multi-agent simulation reference for turning seed material into an agent population, running interactions, and inspecting the resulting world and reports. Study its world setup, memory, and simulation workflow.
+- **[ChatDev](https://github.com/OpenBMB/ChatDev) and [ChatDev: Communicative Agents for Software Development](https://arxiv.org/pdf/2307.07924)** — References for agent roles, structured communication, handoffs, and workflow orchestration. The paper describes the original virtual software company; the repository also contains the newer ChatDev 2.0 platform.
+
 ## Kanban policy
 
 The organization Project has **Backlog → Ready → In progress → In review → Done**, plus **Blocked**.
