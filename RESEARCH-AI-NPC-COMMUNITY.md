@@ -28,6 +28,31 @@ A separate proposed authoring workflow uses Astra to draft a **stick-figure pose
 
 A user-shared StarCraft II demonstration describes **one strategic Astra plan before combat, then a Jev selector for each squad/key unit roughly twice per second** (attributed to [@GZhan57](https://x.com/GZhan57); an exact primary post, code and run data were not verified). The transferable hypothesis is a slower planner over faster bounded tactical choices. For Matrix, compare event-driven/scripted selection, one shared controller, and per-resident Jev selectors on the same replay. Report plan staleness, decision delay, invalid actions, cost and call rate as resident count grows; a two-per-second rate is an experiment parameter, not a target requirement. The world executor remains authoritative and falls back when a decision is late or unavailable.
 
+## Historical baseline: Halo: Combat Evolved
+
+In their [2002 GDC Halo AI talk](https://halo.bungie.org/misc/gdc.2002.haloai/talk.html), Bungie designers Chris Butcher and Jaime Griesemer described an actor with **one current action** such as fight, flee or charge, held by a finite state machine. Perception drives basic alert transitions; stimulus-triggered behaviors can override or modify the action and emotional state. Their [design notes](https://halo.bungie.org/misc/gdc.2002.haloai/talk.html?page=12) emphasize readable event responses and a rich world simulation that combines simple rules into surprising encounters. This is a strong baseline for Matrix residents: authored states, clear triggers, known completion rules, and visible feedback.
+
+Do not conflate this with Halo 2: Bungie's later [Halo 2 AI paper](https://www.gamedeveloper.com/programming/gdc-2005-proceeding-handling-complexity-in-the-i-halo-2-i-ai) describes a hierarchical finite state machine / behavior DAG. For Matrix, start with the smallest state graph that handles the intended interaction; add planning or model decisions only where an authored baseline has a measured gap.
+
+## Thought experiment: an inhabited quest hub
+
+The World of Warcraft style example is a design prompt for a **Matrix-owned fictional hub**, not a request to modify WoW. A quest giver has a home location, daily routine, authored personality and recent encounter memory. When a player repeatedly asks for work, the character can express mild exasperation, mention a recent event, serve the quest, or take a short errand inside a known area. Other residents can react to that errand. The player sees where to find the quest giver and can still obtain a required quest.
+
+Proposed slices:
+
+1. **Authored state-machine baseline:** `AtPost → Talking → AtPost`, `AtPost → ShortErrand → Returning → AtPost`, with a threat/interruption response and explicit timers. Each transition needs a visible cue and an observed outcome. This can be tested before any model call.
+2. **Grounded dialogue:** a bounded model receives the NPC card, verified local events, the player's current quest eligibility, and recent interaction summary. It may suggest phrasing and a small set of legal intents such as greet, discuss work, refuse optional small talk or point to the noticeboard. It cannot invent a quest, change objectives/rewards or assert unobserved player deeds.
+3. **Optional local choice:** utility or Jev chooses among legal schedule/interact actions. A slower planner may propose a short errand; the finite executor handles navigation, cancellation and return. If model calls are slow or unavailable, the authored behavior continues.
+4. **Quest contract:** stable quest IDs, availability, prerequisites, acceptance, progress and rewards belong to an authoritative quest service. Required progression remains reachable: either the quest giver is locatable and interactable or a clearly marked fallback offers the same accepted quest. Movement and generated dialogue cannot silently strand a player. School lessons/mentor records stay under School ownership if this pattern is later used in an exhibit.
+
+Evaluate three matched versions of the same hub: authored FSM only; FSM plus grounded dialogue; and FSM plus bounded routine/action choice. Replay the same player prompts and world events. Record time to find/accept the quest, navigation failures, contradictory dialogue, invented quest facts, interruption recovery, repeated-line rate, player-rated character coherence, model latency/cost and PC/Quest frame impact. A small unfamiliar-player study can test whether the extra behavior helps more than it confuses.
+
+## Why every NPC is not an open-ended model agent
+
+Games already use AI-controlled NPCs. [World of Warcraft Follower Dungeons](https://news.blizzard.com/en-gb/article/24054790/take-the-lead-in-follower-dungeons) let NPC companions fill combat roles and lead a group; this does not imply open-ended conversation for every quest giver. Epic [announced publishable LLM conversations for Fortnite islands in July 2026](https://www.fortnite.com/news/publish-islands-with-llm-conversations-starting-july-30), including controlled personas and gameplay outputs. Ubisoft described [NEO NPC](https://news.ubisoft.com/en-gb/article/5qXdxhshJBXoanFZApdG3L/how-ubisofts-new-generative-ai-prototype-changes-the-narrative-for-npcs) as a prototype whose writers still define characters and whose team tests guardrails.
+
+The engineering tradeoff is the scale of **reliable agency**, not a lack of NPC AI. An open-ended resident must keep quest state, lore, authored character, navigation, safety, performance and player access coherent across many players and sessions. Epic describes cloud processing, safety layers, response latency and capacity controls for its conversation feature; Ubisoft describes iterative character tuning and scenario guardrails. These are product constraints that Matrix should measure explicitly, while its authored FSM and quest service maintain a useful experience when a model has no good answer.
+
 ## Proposed resident loop
 
 1. **Observe:** A resident receives only local, permitted facts and an event/receipt history. Separate verified events from beliefs and memories.
