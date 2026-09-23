@@ -180,6 +180,8 @@ The proposed first slice is an **isolated, deterministic fixture** with two resi
 
 Character motion can start with licensed clips, while generated motion remains an authoring experiment. A slower planning layer with faster local choices is another hypothesis for the optional community; it must be measured against scripted decisions and runtime budgets. [Source and workflow notes](RESEARCH-AI-NPC-COMMUNITY.md) identify Quaternius, Defold, Rigipo, stick-figure storyboards and the reported Astra/Jev RTS demonstration.
 
+A later human-facing test is an inhabited quest hub: a resident may remember a recent interaction, react with authored personality, wander briefly within a bounded area and return. An authoritative quest service keeps required quests discoverable and grants progress/rewards; grounded dialogue and optional model choices cannot change that contract. [Halo: Combat Evolved's finite-state AI and current NPC examples](RESEARCH-AI-NPC-COMMUNITY.md) provide baseline and context.
+
 Acceptance for a community claim requires a comparison with scripted and isolated-agent baselines under matched seeds and budgets, plus recorded task success, validated skill reuse, artifact lineage, invalid actions, latency/cost, failure recovery and replay. PC and Quest 3 performance each need direct evidence. [Research synthesis and primary links](RESEARCH-AI-NPC-COMMUNITY.md), [community evaluation #14](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/14) and [Jev decision study #15](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/15) define the research gates; any accepted runtime implementation is scoped in existing Matrix issues.
 
 ## Longer-term scope and exclusions
