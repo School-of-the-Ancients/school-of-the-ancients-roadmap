@@ -172,6 +172,20 @@ Detailed issue dependencies and status rules live in the [delivery plan](ROADMAP
 
 Desktop and Quest Pro can validate early lesson work. Quest 3 is the primary final room-aware target; #22A gates its room acceptance. #26 gates physical-image-dependent features only. Neither generic NPC navigation (#22B), needs, nor GOAP gates the first lesson.
 
+## Optional Matrix AI NPC community
+
+An exploratory product direction is a persistent community of distinct AI residents in Matrix. Residents may develop personal goals and reusable skills, encounter artifacts left by others, cooperate or contend for objects, and interact with human visitors. This is a generic Matrix capability under [Matrix NPC roadmap #29](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/29). School may later use an inhabited exhibit, but its mentor dialogue, curriculum and learner progress remain School-owned. It does not gate the first prepared lesson.
+
+The proposed first slice is an **isolated, deterministic fixture** with two residents, one validated shared artifact, one object interaction, a conflicting resource, observed outcomes, save/restore and replay. The runtime owns legal actions, state changes and receipts. Skills and artifacts are typed, bounded data with provenance and validator results. Residents may share them only through supported world capabilities. A finite state graph owns legal transitions and priority interrupts. At optional choice points, compare fixed priority, seeded utility and Jev over the same legal candidates; observed execution remains authoritative. Use utility when it performs as well as Jev or when the model is unavailable.
+
+Character motion can start with licensed clips, while generated motion remains an authoring experiment. A slower planning layer with faster local choices is another hypothesis for the optional community; it must be measured against scripted decisions and runtime budgets. [Source and workflow notes](RESEARCH-AI-NPC-COMMUNITY.md) identify Quaternius, Defold, Rigipo, stick-figure storyboards and the reported Astra/Jev RTS demonstration.
+
+[Odyssey's Agora-2](https://odyssey.systems/introducing-agora-2) is an optional research comparator for shared multi-agent world state and generated views. Any learned-world experiment is assessed separately from Matrix's authoritative actions, receipts and first NPC acceptance; no engine or rendering change is selected by this reference.
+
+A later human-facing test is an inhabited quest hub: a resident may remember a recent interaction, react with authored personality, wander briefly within a bounded area and return. An authoritative quest service keeps required quests discoverable and grants progress/rewards; grounded dialogue and optional model choices cannot change that contract. [Halo: Combat Evolved's finite-state AI and current NPC examples](RESEARCH-AI-NPC-COMMUNITY.md) provide baseline and context.
+
+Acceptance for a community claim requires a comparison with scripted and isolated-agent baselines under matched seeds and budgets, plus recorded task success, validated skill reuse, artifact lineage, invalid actions, latency/cost, failure recovery and replay. PC and Quest 3 performance each need direct evidence. [Research synthesis and primary links](RESEARCH-AI-NPC-COMMUNITY.md), [community evaluation #14](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/14) and [Jev decision study #15](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/15) define the research gates; any accepted runtime implementation is scoped in existing Matrix issues.
+
 ## Longer-term scope and exclusions
 
 The full direction includes multiple mentors/exhibits, reusable authored and adaptive curricula, learner knowledge and uploaded course material, generated diagrams/backgrounds, shared teaching, and optional believable characters. Existing beta/v2/NPC issues own those capabilities where they fit; adoption follows the reuse decision.

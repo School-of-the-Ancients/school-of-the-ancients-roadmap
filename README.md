@@ -14,6 +14,8 @@ This is a **planning and API-design repository**, not a new app implementation. 
 - [Ordered delivery plan and issue map](ROADMAP.md)
 - [Agent experience research references](ROADMAP.md#research-references-for-agent-experiences)
 - [Proposed cross-product API contract](API-CONTRACT.md)
+- [AI NPC community source index](RESOURCES.md)
+- [AI NPC community research and evaluation plan](RESEARCH-AI-NPC-COMMUNITY.md)
 - [Organization Kanban board](https://github.com/orgs/School-of-the-Ancients/projects/1)
 - [Product and integration issues](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues)
 
