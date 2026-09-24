@@ -32,7 +32,7 @@ These are prioritized pulls, not a demand to complete the entire loader, every p
 
 ## Optional AI NPC community research track
 
-This track can proceed alongside the ordered School lesson phases. It proposes a generic Matrix resident community and feeds the existing [Matrix NPC roadmap #29](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/29). It does not change S0–S5 exit gates or add an NPC dependency to the first teaching loop. See the [research review and source links](RESEARCH-AI-NPC-COMMUNITY.md).
+This track can proceed alongside the ordered School lesson phases. It proposes a generic Matrix resident community and feeds the existing [Matrix NPC roadmap #29](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/29). It does not change S0–S5 exit gates or add an NPC dependency to the first teaching loop. See the [research review](RESEARCH-AI-NPC-COMMUNITY.md) and [consolidated resource index](RESOURCES.md).
 
 | Step | Outcome and gate | Issue / owner |
 | --- | --- | --- |
