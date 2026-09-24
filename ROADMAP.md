@@ -2,12 +2,18 @@
 
 Updated September 24, 2026. This is a plan; code, fixture results, live service state, and actual-device acceptance are separate evidence.
 
-**Independent products:** School owns education and learner experience. Matrix owns the creative/spatial runtime. A versioned API connects them. Preserve beta's useful ideas while improving their implementation; the reuse audit and a standalone text-first slice choose a fresh or adapted School foundation before broad migration. Google live voice is not the application core.
+**Module-first plan:** the [module catalog](MODULES.md) separates Core, Operator, Content, Spatial Presence, Character Body, AI Citizens, School, Human Interface and Integration. School and Matrix remain independently usable compositions. Versioned interfaces connect only the capabilities each experience needs. Preserve beta's useful ideas while improving their implementation; the reuse audit and a standalone text-first slice choose a fresh or adapted School foundation before broad migration. Google live voice is not the application core.
 
 [Product epic](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/1) · [Kanban](https://github.com/orgs/School-of-the-Ancients/projects/1) · [PRD](PRD.md) · [API proposal](API-CONTRACT.md)
 
 
-## Ordered outcomes and implementation issues
+## Module delivery lanes
+
+Use [MODULES.md](MODULES.md#existing-issue-ownership) for the complete issue-to-module map and independent acceptance gates. Existing repository placement does not combine responsibility. Core execution, Operator construction, Citizens policy and School teaching have separate owners and records. Content, Body and Spatial adapters expose reusable capabilities. Human Interface and Boulder remain separate integration/content lanes until their existing backlogs are linked.
+
+Each scoped issue records **Primary module**, **Consumes**, and **Acceptance boundary**. Shared issues retain their history but distinguish producer and consumer slices. Independent module fixtures can proceed together; only a specific integration waits for both required capabilities.
+
+## School experience outcomes and implementation issues
 
 | Phase | Outcome | New scoped work | Existing capabilities to reuse |
 | --- | --- | --- | --- |
@@ -18,7 +24,7 @@ Updated September 24, 2026. This is a plan; code, fixture results, live service 
 | S4 | World's Fair and facilitation | [Build a World's Fair exhibit library with VR visits and AR placement](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/9)<br>[Support a PC facilitator and headset learner with shared status and clear control](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/10) | [Matrix #22](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/22) **22A** for Quest 3 room acceptance; [Matrix #26](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/26) only for physical-image-dependent experiences. |
 | S5 | Adaptive/shared expansion | [Connect adaptive curricula, learner knowledge and course materials to reusable exhibits](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/11)<br>[Evaluate multiheadset shared learning and choose a bounded networking design](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/12) | [Matrix #29](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/29) optional generic NPC autonomy remains independently useful and outside the first teaching loop. |
 
-Six repository milestones match S0–S5. They have no invented deadlines. Milestones organize product issues; capabilities in other repositories keep their own ownership. The epic spans phases and has no artificial due date.
+S0–S5 are School experience milestones, not an ecosystem-wide dependency chain. Six repository milestones match S0–S5. They have no invented deadlines. Milestones organize product issues; capabilities in other repositories keep their own ownership. The epic spans phases and has no artificial due date.
 
 ## First work to pull
 
@@ -32,7 +38,7 @@ These are prioritized pulls, not a demand to complete the entire loader, every p
 
 ## Optional AI NPC community research track
 
-This track can proceed alongside the ordered School lesson phases. It proposes a generic Matrix resident community and feeds the existing [Matrix NPC roadmap #29](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/29). It does not change S0–S5 exit gates or add an NPC dependency to the first teaching loop. See the [research review](RESEARCH-AI-NPC-COMMUNITY.md) and [consolidated resource index](RESOURCES.md).
+This track can proceed alongside the ordered School lesson phases. It belongs to the AI Citizens module, uses a world adapter for Core observations/actions, and feeds the existing [Matrix NPC roadmap #29](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/29). It does not change S0–S5 exit gates or add an NPC dependency to the first teaching loop. See the [research review](RESEARCH-AI-NPC-COMMUNITY.md) and [consolidated resource index](RESOURCES.md).
 
 | Step | Outcome and gate | Issue / owner |
 | --- | --- | --- |
@@ -62,7 +68,7 @@ Existing issues retain implementation ownership. The board includes relevant ref
 | Workstream | Existing authoritative or candidate issues | Decision |
 | --- | --- | --- |
 | Matrix foundations | [Matrix #12](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/12), [Matrix #8](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/8), [Matrix #9](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/9), [Matrix #21](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/21), [Matrix #22](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/22), [Matrix #24](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/24), [Matrix #25](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/25), [Matrix #26](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/26), [Matrix #28](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/28) | Continue existing implementations and acceptance; no duplicate loaders/capture/executors |
-| Optional characters | [Matrix #29](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/29), [Matrix #13](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/13), [Matrix #14](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/14), [Matrix #15](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/15), [Matrix #16](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/16), [Matrix #17](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/17), [Matrix #18](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/18), [Matrix #19](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/19), [Matrix #20](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/20) | Independent general NPC track; consume only needed capabilities |
+| Character Body and AI Citizens (separate modules) | [Matrix #29](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/29), [Matrix #13](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/13), [Matrix #14](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/14), [Matrix #15](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/15), [Matrix #16](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/16), [Matrix #17](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/17), [Matrix #18](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/18), [Matrix #19](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/19), [Matrix #20](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/20) | Body owns finite embodiment; Citizens owns policy/memory; both consume Core contracts |
 | Existing authored lesson | [Matrix #23](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/23) | Extend tested desktop integration into independent-product/headset acceptance |
 | Beta conversation, visuals, voice | [beta #104](https://github.com/School-of-the-Ancients/sota-beta/issues/104), [beta #106](https://github.com/School-of-the-Ancients/sota-beta/issues/106), [beta #108](https://github.com/School-of-the-Ancients/sota-beta/issues/108), [beta #119](https://github.com/School-of-the-Ancients/sota-beta/issues/119), [beta #122](https://github.com/School-of-the-Ancients/sota-beta/issues/122), [beta #163](https://github.com/School-of-the-Ancients/sota-beta/issues/163) | Preserve product feel; validate/fix observed defects rather than assume current behavior |
 | Beta curriculum, content, knowledge | [beta #112](https://github.com/School-of-the-Ancients/sota-beta/issues/112), [beta #113](https://github.com/School-of-the-Ancients/sota-beta/issues/113), [beta #114](https://github.com/School-of-the-Ancients/sota-beta/issues/114), [beta #118](https://github.com/School-of-the-Ancients/sota-beta/issues/118), [beta #120](https://github.com/School-of-the-Ancients/sota-beta/issues/120), [beta #253](https://github.com/School-of-the-Ancients/sota-beta/issues/253), [beta #254](https://github.com/School-of-the-Ancients/sota-beta/issues/254) | Candidate School implementation work; prioritize after reuse audit |
@@ -105,7 +111,7 @@ The organization Project has **Backlog → Ready → In progress → In review �
 - **Blocked:** record the concrete blocker, owner/next action and what can proceed independently. Lack of hardware blocks hardware acceptance, not all design/fixture work.
 - **Done:** required acceptance is recorded. A merged PR, screenshot, completed animation, or model claim alone cannot establish complete learning/device acceptance.
 
-Issue labels express area, priority and S0–S5 phase. Product milestones organize the new roadmap repository; existing v2 milestones are preserved. Dates stay unset until scope/dependencies and actual course requirements are confirmed. Use the Roadmap view for sequencing, not fabricated calendar commitments.
+Issue bodies identify module ownership and consumed interfaces as specified in MODULES.md. Keep one organization board with module-scoped views as the target; no new board fields/views are claimed by this documentation change. Existing issue labels express area, priority and S0–S5 School phase. Product milestones organize the new roadmap repository; existing v2 milestones are preserved. Dates stay unset until scope/dependencies and actual course requirements are confirmed. Use the Roadmap view for sequencing, not fabricated calendar commitments.
 
 ## Pull request and release policy
 

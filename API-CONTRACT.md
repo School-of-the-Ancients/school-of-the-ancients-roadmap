@@ -1,8 +1,23 @@
-# School ↔ Matrix API proposal
+# Module contracts and School ↔ Matrix API proposal
 
 Status: design proposal, September 22, 2026. Routes and message shapes below are not implemented endpoints. The contract issue will finalize them against the existing Matrix API and School implementation selected by the reuse audit.
 
-## Independent products and authority
+## Module authority
+
+The [module catalog](MODULES.md) is authoritative for responsibility and state ownership. The detailed envelopes below remain the School–Matrix integration proposal; they are not a universal endpoint specification.
+
+| Boundary | Producer → consumer | Authority and acceptance |
+| --- | --- | --- |
+| World actions | Core → Operator, Citizens world adapter, School connector | Core validates and executes supported requests, returning observed receipts; clients never directly mutate world state |
+| Character embodiment | Body → Citizens or School presentation | Finite animation/navigation/interaction independent of resident policy; cancellation and outcomes use Core |
+| Resident decisions | Citizens → world adapter → Core/Body | Local observations and legal candidate actions in; bounded intentions out; memory/policy never claim execution |
+| Content installation | Content → Core/Body and experience preflight | Exact versions and runtime registration; unavailable capability is explicit |
+| Spatial mapping | Spatial Presence → world/body adapters | Coordinate frames, anchor generations and device availability; remote viewpoint and physical-body position remain distinct |
+| Personal context | Human Interface → explicitly enabled consumer | Bounded consented observations/references; no shared personal/learner/resident database |
+
+The same contracts may use in-process interfaces or existing transports. No microservice split is required. Each module declares versions, dependencies, availability and its own persistence schema. Test missing optional modules, stale versions, duplicate requests, interruption and reconciliation before integrating a pair.
+
+## School integration ownership
 
 | Product | Owns | Does not own |
 | --- | --- | --- |

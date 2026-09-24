@@ -1,4 +1,6 @@
-# AI NPC community resources
+# AI Citizens module resources
+
+Module owner: [AI Citizens / Simulacra](MODULES.md). Motion references feed Character Body; world-model comparisons feed research adapters. These sources do not make School or Core depend on the whole NPC research stack.
 
 Updated September 24, 2026. This is the source index for the [Matrix NPC community research review](RESEARCH-AI-NPC-COMMUNITY.md), [roadmap track](ROADMAP.md#optional-ai-npc-community-research-track), [evaluation issue #14](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/14), and [Jev decision issue #15](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/15). Research links are inputs to a bounded experiment, not evidence that a Matrix implementation or device validation exists.
 

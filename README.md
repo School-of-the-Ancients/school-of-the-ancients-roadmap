@@ -1,38 +1,41 @@
-# School of the Ancients — product and integration roadmap
+# Modular world, citizens and learning roadmap
 
-**Two independent products, connected through an API.**
+**Composable modules with explicit interfaces and independent acceptance.**
 
-- **[School of the Ancients](https://schooloftheancients.com/)** owns the academy, historical mentors, conversation, lessons, assessment, and learner progress. Preserve the useful ideas and compelling interactions of the older [sota-beta](https://github.com/School-of-the-Ancients/sota-beta). A fresh text-first School implementation is an option, with selective reuse from beta or [v2](https://github.com/School-of-the-Ancients/sota-v2) where it helps.
-- **[Matrix Loading Operator](https://github.com/School-of-the-Ancients/matrix-loading-operator)** owns loading and editing scenes, content, spatial interactions, and observed runtime results. It remains useful as a standalone creative tool and can support other clients.
-- **The optional integration** lets a mentor request supported demonstrations and receive observed results. Neither product embeds the other product's domain or directly edits its database.
+This repository coordinates the module architecture and integrations for Matrix, AI Citizens, School of the Ancients and the human interface. Existing repositories remain code homes; modules do not require separate services or repositories.
 
-This is a **planning and API-design repository**, not a new app implementation. Application code stays in the existing repositories. New implementation work belongs with its owning product; this repository tracks product outcomes, unresolved ownership decisions, and integration acceptance.
+| Module group | Responsibility |
+| --- | --- |
+| Matrix Core | Authoritative scenes, finite actions, observations and persistence |
+| Matrix Operator | Human construction requests and reviewed scene editing |
+| Content | Catalogs, asset preparation and runtime capability registration |
+| Spatial Presence | Room/world alignment, AR/VR views and later remote presence |
+| Character Body | Avatars, animation, navigation and finite interactions |
+| AI Citizens / Simulacra | Memory, needs, schedules, planning and social behavior |
+| School | Historical mentors, teaching, lessons and learner progress |
+| Manfred / Human Interface | Wearable input, lifelogging and consented personal context |
+| Integration | Versioned contracts, pairing, correlation and recovery |
+
+**Matrix executes world actions; Citizens chooses intentions; School owns teaching.** Operator is a module of the Matrix experience. A School tutor does not require an autonomous resident, and a resident does not require School.
 
 ## Start here
 
-- [Product brief / PRD](PRD.md)
-- [Ordered delivery plan and issue map](ROADMAP.md)
-- [Agent experience research references](ROADMAP.md#research-references-for-agent-experiences)
-- [Proposed cross-product API contract](API-CONTRACT.md)
-- [AI NPC community source index](RESOURCES.md)
-- [AI NPC community research and evaluation plan](RESEARCH-AI-NPC-COMMUNITY.md)
+- [Module catalog, ownership and dependency rules](MODULES.md)
+- [School experience PRD](PRD.md)
+- [Module delivery plan and existing issue map](ROADMAP.md)
+- [Module contracts and School–Matrix integration proposal](API-CONTRACT.md)
+- [AI Citizens research](RESEARCH-AI-NPC-COMMUNITY.md) and [source index](RESOURCES.md)
 - [Organization Kanban board](https://github.com/orgs/School-of-the-Ancients/projects/1)
-- [Product and integration issues](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues)
+- [Coordination issues](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues)
 
-The first experience is one complete prepared lesson with an AI historical mentor: predict → manipulate → observe → discuss → save/resume. Later, those exhibits form a World's Fair that can be visited in VR or brought into a real room in AR.
+## Delivery
 
-## What is decided
+Start with bounded module slices and integrate accepted capabilities. School's first integrated experience remains predict → manipulate → observe → discuss → save/resume; S0–S5 describe that experience, not prerequisites for every module. Citizens research and standalone Matrix work can progress independently.
 
-1. Build on the current Matrix Operator.
-2. Preserve beta's good mentor, conversation, visual, and quest ideas while improving their implementation.
-3. Connect independent products through versioned capabilities, requests, events, and receipts.
-4. Begin with prepared content and supported actions; add capabilities when lessons justify them.
-5. Keep all roadmap items planned until their acceptance evidence exists.
+Boulder is a world-data/content workstream; World's Fair is an exhibit composition. Manfred connects the human to these experiences. Demerzel and local compute provide replaceable infrastructure.
 
-## What is not decided
+## Implementation and evidence
 
-The first reuse audit and a bounded standalone slice choose where School's future learning modules live and whether to build fresh or adapt tested code. Beta's Google live-voice architecture is not the target: a provider-neutral text/lesson core owns state, with optional STT/TTS and visual adapters. Matrix currently has an adapter to v2's durable lesson API; this is a compatibility path to preserve, not a commitment to make v2 the new product. API examples in this repository are **proposals, not currently deployed endpoints**.
+Build on the existing Matrix implementation. Preserve beta's useful mentor, conversation, visual and quest ideas; the existing audit and text-first slice decide which School code to reuse or replace. Preserve the current v2 compatibility path until an explicit migration is accepted.
 
-## Working agreement
-
-Use issues for outcomes and acceptance, the board for current work, and PRs for reviewable changes. Keep one authoritative issue for each existing capability. Link related beta/v2/Matrix work rather than duplicating it. Product/lesson issues do not turn the reusable Matrix runtime into an education-specific application.
+Keep one authoritative issue per capability, with module ownership and integration dependencies. Code remains in its owning repository; this is a planning repository. Use PRs for reviewable changes and recorded runtime/device evidence for completion. API shapes and module extraction are plans until implementation evidence exists.

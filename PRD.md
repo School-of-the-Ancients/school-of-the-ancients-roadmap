@@ -6,13 +6,13 @@ Status: proposed implementation plan, September 22, 2026. No new runtime feature
 
 [Organization Kanban](https://github.com/orgs/School-of-the-Ancients/projects/1) · [Delivery plan](ROADMAP.md) · [API proposal](API-CONTRACT.md) · [Current Matrix guide](https://github.com/School-of-the-Ancients/matrix-loading-operator#readme)
 
-## Independent products, connected through an API
+## Module boundaries and independently usable experiences
 
-The user's meaning of modular is primarily **product independence**: Matrix Operator is its own creative/runtime product; School of the Ancients is its own educational product. School should work in its browser without Matrix, and Matrix should work without School. A versioned optional connector joins them.
+The architecture is defined by the [module catalog](MODULES.md): Core, Operator, Content, Spatial Presence, Character Body, AI Citizens, School, Human Interface and Integration. These are responsibility and state boundaries, not a requirement for new repositories or microservices. This PRD specifies the School experience assembled from those modules.
 
-School owns mentor identity, conversation, curriculum, lesson/assessment decisions, and learner records. Matrix owns scenes, assets, runtime interactions, and observations. School asks for a supported demonstration; Matrix validates it through the existing review/Apply flow and returns what actually happened. Each product owns its storage and release lifecycle. Other clients may use the same Matrix API.
+School works without Matrix; Matrix works without School or Citizens. School owns learning and historical teaching profiles. Citizens owns resident policy and simulation memory. Core owns authoritative world execution and observations. Operator is the human construction interface to Core. Body supplies finite embodiment without requiring autonomy.
 
-This planning repo coordinates the product vision and shared API; it does not merge the applications or start a replacement app. Internal adapters below support this larger product boundary. See [the API proposal](API-CONTRACT.md), including the unresolved real-world connection between the public School website and a local Matrix service.
+The optional connector uses versioned capabilities, requests and observed receipts. Each module owns its records; a repository containing several modules does not give them shared write authority. See [the API proposal](API-CONTRACT.md), including the unresolved connection between the public School website and local Matrix service.
 
 ## Product decisions from this conversation
 
@@ -81,6 +81,8 @@ School owns durable turns, mentor/lesson state, source context and validated too
 
 ## Module architecture
 
+The following table details School-facing submodules/adapters within the canonical [module catalog](MODULES.md). It does not collapse Citizens policy into Core or require the whole ecosystem for a lesson.
+
 Start with modules in existing repositories/processes. Modularity does not require a service, repository, or package for every feature. Extract deployment units only when useful and document why.
 
 | Module | Responsibility | Boundary and fallback |
@@ -98,7 +100,9 @@ Start with modules in existing repositories/processes. Modularity does not requi
 | Observation/capture | Precise scene observations plus optional explicit image | Honest provenance, timestamps, supported devices, stale-context handling |
 | Experiment capability | One tested parameterized teaching interaction | Deterministic/measured outcomes, bounded parameters, reset; no fabricated physics results |
 | World navigation | Exhibit discovery, VR pavilion/AR placement, return/resume | No mandatory NPC autonomy or multiuser networking |
-| Optional social/adaptive modules | Shared sessions, course sequencing, learner knowledge, autonomous characters | Consume existing contracts; not prerequisites for the first lesson |
+| School adaptive modules | Course sequencing and learner knowledge | School-owned records; independent of resident memory |
+| AI Citizens module | Resident needs, memory, schedules, planning and social behavior | Separate module consuming world/body contracts; optional for teaching |
+| Shared-session adapter | Session coordination and participant identity | Optional integration; no merged learner records |
 
 ### Required contract properties
 
@@ -172,9 +176,9 @@ Detailed issue dependencies and status rules live in the [delivery plan](ROADMAP
 
 Desktop and Quest Pro can validate early lesson work. Quest 3 is the primary final room-aware target; #22A gates its room acceptance. #26 gates physical-image-dependent features only. Neither generic NPC navigation (#22B), needs, nor GOAP gates the first lesson.
 
-## Optional Matrix AI NPC community
+## Optional AI Citizens module
 
-An exploratory product direction is a persistent community of distinct AI residents in Matrix. Residents may develop personal goals and reusable skills, encounter artifacts left by others, cooperate or contend for objects, and interact with human visitors. This is a generic Matrix capability under [Matrix NPC roadmap #29](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/29). School may later use an inhabited exhibit, but its mentor dialogue, curriculum and learner progress remain School-owned. It does not gate the first prepared lesson.
+An exploratory AI Citizens module direction is a persistent community of distinct AI residents in Matrix. Residents may develop personal goals and reusable skills, encounter artifacts left by others, cooperate or contend for objects, and interact with human visitors. This belongs to the AI Citizens module, initially hosted in the Matrix repository under [Matrix NPC roadmap #29](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/29). School may later use an inhabited exhibit, but its mentor dialogue, curriculum and learner progress remain School-owned. It does not gate the first prepared lesson.
 
 The proposed first slice is an **isolated, deterministic fixture** with two residents, one validated shared artifact, one object interaction, a conflicting resource, observed outcomes, save/restore and replay. The runtime owns legal actions, state changes and receipts. Skills and artifacts are typed, bounded data with provenance and validator results. Residents may share them only through supported world capabilities. A finite state graph owns legal transitions and priority interrupts. At optional choice points, compare fixed priority, seeded utility and Jev over the same legal candidates; observed execution remains authoritative. Use utility when it performs as well as Jev or when the model is unavailable.
 
