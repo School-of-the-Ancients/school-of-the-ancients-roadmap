@@ -1,8 +1,12 @@
-# Research: persistent AI NPC communities for Matrix
+# Research: AI Citizens module and persistent NPC communities
 
 Status: proposed research direction, started 2026-09-23; updated 2026-09-24. This note records source findings and a testable design. It does not report a Matrix implementation or a reproduced result.
 
-## Product question
+## Module ownership
+
+This research belongs to the [AI Citizens module](MODULES.md), initially hosted in the existing Matrix repository. Citizens owns policy, resident memory and social behavior; Character Body owns finite embodiment; Core owns world execution and observed outcomes. Research fixtures use a world adapter and do not require School, a headset or full Matrix startup. Existing #29 and its linked issues remain the tracking home, not a mandate to combine these modules. The contracts described below must preserve this split.
+
+## Research question
 
 Can Matrix support a persistent community of distinct AI residents that learn reusable skills, leave useful artifacts in the world, interact with one another and people, and remain inspectable and playable on PC and, later, Quest 3? The first answer should come from an isolated simulation fixture with measured baselines. Existing [Matrix NPC roadmap #29](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/29) owns reusable character/runtime implementation. School may later use these capabilities for inhabited exhibits, while School retains mentors, lessons, and learner records.
 
