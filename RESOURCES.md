@@ -2,6 +2,15 @@
 
 Updated September 24, 2026. This is the source index for the [Matrix NPC community research review](RESEARCH-AI-NPC-COMMUNITY.md), [roadmap track](ROADMAP.md#optional-ai-npc-community-research-track), [evaluation issue #14](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/14), and [Jev decision issue #15](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/15). Research links are inputs to a bounded experiment, not evidence that a Matrix implementation or device validation exists.
 
+## Earlier roadmap research retained
+
+These links were already in [ROADMAP.md](ROADMAP.md#research-references-for-agent-experiences) before this NPC community PR and remain part of the reference set.
+
+- **Generative Agents:** [Interactive Simulacra of Human Behavior](https://arxiv.org/pdf/2304.03442), a reference for memory, reflection, retrieval, planning and believable interactions.
+- **Simile and social simulation:** [Simile](https://www.simile.com/) · [research/blog](https://www.simile.com/blog) · [Social Simulacra](https://arxiv.org/abs/2208.04024) · [Generative Agent Simulations of 1,000 People](https://arxiv.org/abs/2411.10109) · [Finetuning LLMs for Human Behavior Prediction in Social Science Experiments](https://arxiv.org/abs/2509.05830) · [Building confidence in Simile](https://www.simile.com/blog/confidence). Use for behavioral fidelity and evaluation questions.
+- **MiroFish:** [open-source multi-agent simulator](https://github.com/666ghj/MiroFish), a reference for seed material, agent populations, interaction traces and world reports.
+- **ChatDev:** [repository](https://github.com/OpenBMB/ChatDev) · [Communicative Agents for Software Development paper](https://arxiv.org/pdf/2307.07924), a reference for roles, structured communication and handoffs.
+
 ## Agent societies, skill reuse, and autonomous laboratories
 
 - **SwarmWorld:** S. Pal, F. Y. Wang, M. J. Buehler, *SwarmWorld: Stigmergic technological evolution in societies of language-model agents* (2026). [Paper](https://arxiv.org/abs/2608.26081) · [HTML](https://arxiv.org/html/2608.26081v1) · [code](https://github.com/lamm-mit/SwarmWorld) · [architecture](https://github.com/lamm-mit/SwarmWorld/blob/main/docs/ARCHITECTURE.md) · [dataset](https://huggingface.co/datasets/lamm-mit/swarmworld-data). Candidate fixture for local observations, shared artifacts, provenance and culture-versus-isolated baselines.
