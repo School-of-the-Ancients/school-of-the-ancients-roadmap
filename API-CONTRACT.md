@@ -1,6 +1,6 @@
 # Module contracts and School ↔ Matrix API proposal
 
-Status: design proposal, September 22, 2026. Routes and message shapes below are not implemented endpoints. The contract issue will finalize them against the existing Matrix API and School implementation selected by the reuse audit.
+Status: design proposal begun September 22, 2026 and aligned with the WebXR-only forward runtime after Matrix PR #131. Routes and message shapes below are not implemented endpoints. The contract issue will finalize them against the existing Matrix Web API and School implementation; a proposed envelope is not a claim that a route or hosted connection works.
 
 ## Module authority
 
@@ -21,7 +21,7 @@ The same contracts may use in-process interfaces or existing transports. No micr
 
 | Product | Owns | Does not own |
 | --- | --- | --- |
-| School of the Ancients | Mentor identity/teaching, learner conversation, curriculum, lessons, assessment, learning records | Unity internals, scene authority, asset installation internals |
+| School of the Ancients | Mentor identity/teaching, learner conversation, curriculum, lessons, assessment, learning records | Matrix runtime internals, scene authority, asset installation internals |
 | Matrix Loading Operator | Runtime capabilities, scene/content identity, proposals, user-approved commands, execution receipts, observations, scene checkpoints | Learner mastery, educational correctness, curriculum, School account database |
 | Optional connector | Session pairing, capability translation, correlation, errors/reconciliation, presentation binding | A third canonical scene or learning store |
 
@@ -107,7 +107,7 @@ The final schema must distinguish acknowledgment, measured effect, partial resul
 ## Integration fixtures and acceptance
 
 1. Matrix standalone works with School offline; School standalone works with Matrix absent.
-2. A fake School client exercises Matrix contract fixtures; a fake Matrix adapter exercises School without Unity.
+2. A fake School client exercises Matrix contract fixtures; a fake Matrix adapter exercises School without Matrix.
 3. Actual School client → paired Matrix runtime → reviewed demonstration → receipt/measured result → mentor reply works on desktop, then headset.
 4. Duplicate/out-of-order requests, dropped replies, revoked pairing, two competing clients, stale snapshots, and missing capabilities have deterministic recovery.
 5. Save/restore reconciles both products without rolling back unrelated later learning records. Runtime restoration must be acknowledged before a matching learning checkpoint is resumed/forked.

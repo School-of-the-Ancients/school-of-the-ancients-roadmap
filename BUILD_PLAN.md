@@ -1,12 +1,12 @@
 # Build plan: finish useful slices, then expand
 
-September 25, 2026. This is the short, current execution guide. [MODULES.md](MODULES.md) retains ownership definitions; [PRD.md](PRD.md), [ROADMAP.md](ROADMAP.md), and existing issues retain the extended vision and detailed acceptance. No code migration, issue closure, or board change is implied.
+Started September 25, 2026; aligned with Matrix PRs [#124](https://github.com/School-of-the-Ancients/matrix-loading-operator/pull/124) and [#131](https://github.com/School-of-the-Ancients/matrix-loading-operator/pull/131) on September 26. This is the short School execution guide. [MODULES.md](MODULES.md) retains cross-product ownership; [PRD.md](PRD.md), [ROADMAP.md](ROADMAP.md), and existing issues retain extended School acceptance. This planning update implies no new code migration, issue closure, or board change.
 
 ## Where work belongs
 
 | Repository | Work |
 | --- | --- |
-| [matrix-loading-operator](https://github.com/School-of-the-Ancients/matrix-loading-operator) | Current Web Matrix, PC Codex portal, reusable world/asset tools; preserve Unity as the native/legacy track. Start with its [PRD](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/PRD.md) and [implementation steps](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/IMPLEMENTATION_PLAN.md). |
+| [matrix-loading-operator](https://github.com/School-of-the-Ancients/matrix-loading-operator) | Current Three.js/WebXR Matrix, PC Codex portal and reusable world/asset tools. Its [vision](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/VISION.md) → [PRD](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/PRD.md) → [implementation plan](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/IMPLEMENTATION_PLAN.md) → [project map](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/PROJECTS.md) define product direction, active work and ownership; [#122](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/122) owns immersive Creator Mode acceptance. [Creation resources](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/RESOURCES.md) are inputs. [Unity source and native releases](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/Archive/Unity/README.md) are read-only history. |
 | [school-of-the-ancients](https://github.com/School-of-the-Ancients/school-of-the-ancients) | Existing text-first School implementation and limited Matrix connector. Continue this candidate; no third School rewrite. |
 | This roadmap repository | Product decisions, cross-repository order and research. Do not add runtime code here. |
 | `sota-beta` / `sota-v2` | Experience/code references and existing compatibility paths. Do not delete, migrate records, or resume every old backlog item automatically. |
@@ -15,13 +15,13 @@ Modules are ordinary code boundaries unless a real deployment need says otherwis
 
 ## Current evidence, not another starting-from-zero plan
 
-Inspected Matrix main: `509a72a344faa8e2cc63c12b67a6b08d140c43ce` (PR #80). Roadmap main: `4094e40c50eae8818fd3c6297876786dca38c162` (PR #17). School main: `d2a966b48ff64d6eb9b4ae3f0a63a87e9d05c955`.
+The September 25 review inspected Matrix main at `509a72a344faa8e2cc63c12b67a6b08d140c43ce` (PR #80), roadmap main at `4094e40c50eae8818fd3c6297876786dca38c162` (PR #17), and School main at `d2a966b48ff64d6eb9b4ae3f0a63a87e9d05c955`. Those are historical review refs. Matrix subsequently merged the [PR #124 documentation refocus](https://github.com/School-of-the-Ancients/matrix-loading-operator/pull/124) and [PR #131 Unity archive](https://github.com/School-of-the-Ancients/matrix-loading-operator/pull/131); recheck current main and open PRs before execution.
 
-School main already contains the standalone Galileo/scale lesson, durable local records, a replaceable Codex text provider, reviewed Matrix block placement/scaling and optional local read-aloud. See the [current implementation README](https://github.com/School-of-the-Ancients/school-of-the-ancients/blob/main/README.md) and PRs #1–#4.
+School main already contains the standalone Galileo/scale lesson, durable local records, a replaceable Codex text provider, reviewed Matrix block placement/scaling, mentor-directed demonstrations and optional local read-aloud. See the [current implementation README](https://github.com/School-of-the-Ancients/school-of-the-ancients/blob/main/README.md) and PRs #1–#5.
 
-At review time, [School PR #5](https://github.com/School-of-the-Ancients/school-of-the-ancients/pull/5) is **open/draft**: mentor-directed scene demonstrations. [PR #6](https://github.com/School-of-the-Ancients/school-of-the-ancients/pull/6) is **open**: optional dictation, visual adapters and audit 2A. Both target `main`; they are not a required stacked chain. Review their overlap and combined tests before any authorized merge. Legacy beta PR #257 is separate, not the default implementation path.
+[School PR #5](https://github.com/School-of-the-Ancients/school-of-the-ancients/pull/5) merged September 25: mentor-directed scene demonstrations are in School main. At this update, [PR #6](https://github.com/School-of-the-Ancients/school-of-the-ancients/pull/6) remains open for optional dictation, visual adapters and audit 2A. Review its current diff and tests against main before any merge. Legacy beta PR #257 is separate, not the default implementation path.
 
-Matrix already has the Web runtime, portal, GLB catalog, animations, numeric components and browser persistence. Newer Quest acceptance and a complete rich Blender MCP conversation remain gaps. A merged PR or local test does not prove deployment or headset behavior. This planning pass did not rerun runtime tests.
+Matrix already has the Web runtime, portal, GLB catalog, animations, numeric components and browser persistence. Continue its existing Creator Mode implementation rather than rebuilding the engine; the White Room is a blank/existing-world creation idea, not a Unity prefab or separate mandatory editing room. Newer Quest acceptance and a complete rich Blender MCP conversation remain gaps. A merged PR or local test does not prove deployment or headset behavior. This planning pass did not rerun runtime tests.
 
 ## School product brief for the next release
 
@@ -39,10 +39,10 @@ School owns teaching, learner input, transcript and learning records. Matrix own
 
 | Step | Reuse / smallest change | Exit | Existing owner |
 | --- | --- | --- | --- |
-| **S0 — Review the existing School candidate** | Review open PRs #5/#6 rather than recreating them. Exercise main's text-only lesson and save/resume. Finish the concrete beta-experience comparison; keep unresolved gaps visible. | A reviewed working candidate and a recorded keep/change decision. Each PR is independently reviewed; merge only when authorized. | Roadmap #2/#13; School PRs #5/#6 |
+| **S0 — Review the existing School candidate** | Exercise main's text-only lesson, merged PR #5 demonstration and save/resume; review open PR #6 rather than recreating it. Finish the concrete beta-experience comparison; keep unresolved gaps visible. | A reviewed working candidate and a recorded keep/change decision. Review PR #6 against current main before any authorized merge. | Roadmap #2/#13; School PRs #5/#6 |
 | **S1 — Share one browser experiment** | Use the existing scale lesson and Matrix M3. Select one calculation/state implementation; connect HTML controls, Three.js view and normalized operation/results. Start with built-in blocks. | Equivalent input produces equivalent state/results; changing surfaces does not fork the lesson or experiment. No new general plugin framework. | Roadmap #3/#8; Matrix #31/#32 |
 | **S2 — Complete the optional WebXR lesson loop** | Extend the existing limited local companion, not the privileged Codex portal. Request → review/Apply → runtime receipt → mentor explanation. Use supported WebXR placement; keep text/portrait fallback. | One real browser/Quest lesson, a related surprise question, interruption and coordinated save/resume. Restore world state before claiming the linked demonstration is current. | Roadmap #4/#5/#6/#7; Matrix #23 |
-| **S3 — Make it easy to use again** | Fix observed launch/readiness/input issues; optionally add a second prepared lesson and one-PC/one-headset facilitator controls. | Another person can start and resume without editing provider JSON. Record limitations and freeze a reproducible version. | Roadmap #3/#9/#10; Matrix #24 |
+| **S3 — Make it easy to use again** | Fix observed launch/readiness/input issues; optionally add a second prepared lesson and one-PC/one-headset facilitator controls. | Another person can start and resume without editing provider JSON. Record limitations and freeze a reproducible WebXR version. | Roadmap #3/#9/#10; Matrix #24 |
 
 S0 can proceed alongside Matrix M0–M2. S1 uses the capabilities it needs from Matrix M3; it does not wait for a fancy Blender model. S2 waits for the relevant WebXR/runtime evidence, not every Matrix umbrella issue. These steps select small slices from the older S0–S5 roadmap; they do not redefine or automatically close those broader milestones.
 
@@ -50,8 +50,8 @@ S0 can proceed alongside Matrix M0–M2. S1 uses the capabilities it needs from 
 
 | Lane | Existing issues | Trigger |
 | --- | --- | --- |
-| More content/providers | Matrix #9/#28 | The next actual experience needs an unavailable asset/type. Add one provider. |
-| Character body and Citizens | Matrix #13–#20/#29 | Choose one finite interaction, then a tiny routine; School does not wait for it. |
+| More content/providers | Matrix #9/#28 and [creation resources](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/RESOURCES.md) | The next actual experience needs an unavailable asset/type. Add one provider. |
+| Character body and Citizens | Matrix #13–#19/#29; closed #20 retains prior evidence | Choose one finite interaction, then a tiny routine; School does not wait for it. |
 | Boulder and remote presence | Matrix #38/#41 | A concrete world/registration experiment; use existing prototype evidence. |
 | Adaptive teaching | Roadmap #11 | The first lessons and records work; no automatic full-course generator. |
 | Shared multiheadset world | Roadmap #12 | A demonstrated need beyond one facilitator/headset. |
@@ -66,7 +66,7 @@ Keep existing issues as owners. The Markdown tables provide the work order witho
 
 Prefer one active Matrix PR and one independent School PR over long speculative stacks. Each PR names its outcome, existing code reused, excluded scope, tests actually run, and outstanding wearer checks. Run School tests/typecheck plus the documented cross-repository fixtures for connector changes; confirm what was skipped. Do not automatically merge, close umbrella issues, change public access, or move code.
 
-**Next School prompt:** “Read this BUILD_PLAN.md and the School implementation README/AGENTS instructions if present. Check current main and open PRs #5/#6. Work on S0 only: review/reconcile existing work and demonstrate the standalone lesson before proposing new code. Keep Matrix optional. Report actual evidence and remaining gaps; do not migrate beta/v2 or merge automatically.”
+**Next School prompt:** “Read this BUILD_PLAN.md and the School implementation README/AGENTS instructions if present. Check current main, merged PR #5 and open PR #6. Work on S0 only: review/reconcile existing work and demonstrate the standalone lesson before proposing new code. Keep Matrix optional. Report actual evidence and remaining gaps; do not migrate beta/v2 or merge automatically.”
 
 ## Review scope
 
