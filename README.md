@@ -1,46 +1,28 @@
-# Modular world, citizens and learning roadmap
+# School of the Ancients roadmap
 
-**Start with the [short build plan and current School product brief](BUILD_PLAN.md).** It selects small School and integration steps. The longer documents retain the extended vision, source history and detailed acceptance; they are not a demand to rebuild already implemented features.
+This repository is a **lightweight cross-project index**. It is not a second backlog for Matrix or School.
 
-Current code homes: [Matrix Web + PC Agent Portal](https://github.com/School-of-the-Ancients/matrix-loading-operator) and the existing [text-first School implementation](https://github.com/School-of-the-Ancients/school-of-the-ancients). Matrix's [vision](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/VISION.md), [PRD](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/PRD.md), [implementation plan](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/IMPLEMENTATION_PLAN.md) and [project map](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/PROJECTS.md) own its product direction, active work and module placement. [Matrix resources](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/RESOURCES.md) record creation inputs; [#122](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/122) owns current immersive Creator Mode acceptance. Matrix's Unity source and native releases are [read-only history](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/Archive/Unity/README.md); new runtime and coursework work targets Three.js/WebXR. This repository remains planning and coordination, not another application.
+Each product owns its own direction and implementation work.
 
-**Composable modules with explicit interfaces and independent acceptance.**
-
-This repository coordinates the module architecture and integrations for Matrix, AI Citizens, School of the Ancients and the human interface. Existing repositories remain code homes; modules do not require separate services or repositories.
-
-| Module group | Responsibility |
-| --- | --- |
-| Matrix Core | Authoritative scenes, finite actions, observations and persistence |
-| Matrix Operator | Human construction requests and reviewed scene editing |
-| Content | Catalogs, asset preparation and runtime capability registration |
-| Spatial Presence | Room/world alignment, AR/VR views and later remote presence |
-| Character Body | Avatars, animation, navigation and finite interactions |
-| AI Citizens / Simulacra | Memory, needs, schedules, planning and social behavior |
-| School | Historical mentors, teaching, lessons and learner progress |
-| Manfred / Human Interface | Wearable input, lifelogging and consented personal context |
-| Integration | Versioned contracts, pairing, correlation and recovery |
-
-**Matrix executes world actions; Citizens chooses intentions; School owns teaching.** Operator is a module of the Matrix experience. A School tutor does not require an autonomous resident, and a resident does not require School.
+| Product / layer | Canonical home | Owns |
+| --- | --- | --- |
+| **Matrix** | [matrix-loading-operator](https://github.com/School-of-the-Ancients/matrix-loading-operator) | Three.js/WebXR world, Operator, creation pipelines, persistence and AI Citizens |
+| **School of the Ancients** | [school-of-the-ancients](https://github.com/School-of-the-Ancients/school-of-the-ancients) | teaching experience, historical mentors, lessons, assessment and learner records |
+| **Manfred / human interface** | its implementation repository | wearable/personal input and private human context |
+| **This repository** | here | cross-project boundaries, integration notes and research pointers |
 
 ## Start here
 
-- [Current build order, implementation snapshot and next-agent prompts](BUILD_PLAN.md)
-- [Module catalog, ownership and dependency rules](MODULES.md)
-- [Extended School experience PRD](PRD.md)
-- [Extended module delivery plan and existing issue map](ROADMAP.md)
-- [Module contracts and School–Matrix integration proposal](API-CONTRACT.md)
-- [AI Citizens research](RESEARCH-AI-NPC-COMMUNITY.md) and [source index](RESOURCES.md)
-- [Organization Kanban board](https://github.com/orgs/School-of-the-Ancients/projects/1)
-- [Coordination issues](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues)
+- [MODULES.md](MODULES.md) — simple ownership boundaries.
+- [ROADMAP.md](ROADMAP.md) — cross-project Now / Next / Later.
+- [RESOURCES.md](RESOURCES.md) — where research/resources belong.
 
-## Delivery
+For Matrix itself, use its canonical chain:
 
-Start with bounded module slices and integrate accepted capabilities. School's first integrated experience remains predict → manipulate → observe → discuss → save/resume; S0–S5 describe that experience, not prerequisites for every module. Citizens research and standalone Matrix work can progress independently.
+**[VISION](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/VISION.md) → [ARCHITECTURE](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/ARCHITECTURE.md) → [ROADMAP](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/ROADMAP.md) → current Matrix issue.**
 
-Boulder is a world-data/content workstream; World's Fair is an exhibit composition. Manfred connects the human to these experiences. Demerzel and local compute provide replaceable infrastructure.
+## Rule
 
-## Implementation and evidence
+A Matrix implementation task belongs in the Matrix repo. A School implementation task belongs in the School repo. Use this repository only when work genuinely spans products or evaluates shared research.
 
-Build on the existing Matrix implementation and current text-first School candidate. Preserve beta's useful mentor, conversation, visual and quest ideas; finish the concrete reuse/experience comparison before broader migration. Preserve the current v2 compatibility path until an explicit migration is accepted.
-
-Keep one authoritative issue per capability, with module ownership and integration dependencies. Code remains in its owning repository; this is a planning repository. Use PRs for reviewable changes and recorded runtime/device evidence for completion. API shapes and module extraction are plans until implementation evidence exists.
+Existing issues and older planning files remain useful history, but they do not override the product-owned roadmaps.
