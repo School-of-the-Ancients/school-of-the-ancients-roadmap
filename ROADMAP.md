@@ -1,126 +1,48 @@
-# Implementation roadmap and operating plan
+# Cross-project roadmap
 
-Started September 24, 2026; aligned with Matrix PRs #124 and #131 on September 26. This is the School and cross-product plan; [Matrix's implementation plan](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/IMPLEMENTATION_PLAN.md) and [#122 Creator Mode acceptance](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/122) own its active runtime queue. Code, fixture results, live service state, and actual-device acceptance are separate evidence.
+This file coordinates products; it does not select Matrix implementation work.
 
-**Module-first plan:** the [module catalog](MODULES.md) separates Core, Operator, Content, Spatial Presence, Character Body, AI Citizens, School, Human Interface and Integration. School and Matrix remain independently usable compositions. Versioned interfaces connect only the capabilities each experience needs. Preserve beta's useful ideas while improving their implementation; the reuse audit and a standalone text-first slice choose a fresh or adapted School foundation before broad migration. Google live voice is not the application core.
+## Now
 
-[Product epic](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/1) · [Kanban](https://github.com/orgs/School-of-the-Ancients/projects/1) · [PRD](PRD.md) · [API proposal](API-CONTRACT.md)
+### Matrix
 
+Follow the Matrix-owned roadmap and current issue. Current direction is the Three.js/WebXR world + Operator + AI Citizens architecture, with the creator loop being completed in Matrix itself.
 
-## Module delivery lanes
+### School
 
-Use [MODULES.md](MODULES.md#existing-issue-ownership) for the complete issue-to-module map and independent acceptance gates. Existing repository placement does not combine responsibility. Core execution, Operator construction, Citizens policy and School teaching have separate owners and records. Content, Body and Spatial adapters expose reusable capabilities. Human Interface and Boulder remain separate integration/content lanes until their existing backlogs are linked.
+Keep the School product independently usable. Continue one useful mentor/lesson experience with optional Matrix exhibits rather than making School depend on the entire Matrix/Citizens roadmap.
 
-Each scoped issue records **Primary module**, **Consumes**, and **Acceptance boundary**. Shared issues retain their history but distinguish producer and consumer slices. Independent module fixtures can proceed together; only a specific integration waits for both required capabilities.
+### Integration
 
-## School experience outcomes and implementation issues
+Keep the boundary narrow:
 
-| Phase | Outcome | New scoped work | Existing capabilities to reuse |
-| --- | --- | --- | --- |
-| S0 | Preserve beta; independent API | [Preserve beta: compare existing journeys and decide reusable School modules](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/2)<br>[Define and validate a client-neutral API for independent School and Matrix products](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/31) | [Matrix #8](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/8) and [#24](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/24): scoped WebXR baseline/recovery and release evidence. Closed [#21](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/21) records unfinished native content history, not an active dependency. |
-| S1 | Standalone School and prepared lesson | [Text-first standalone School core](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/13)<br> [Define prepared exhibit packages and a simple readiness/launch flow](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/3)<br>[Connect School lesson sessions to Matrix requests, events and checkpoints](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/4)<br>[Add learner controls and explicit answer/question/scene-command voice routing](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/5) | [Matrix #23](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/23) authored baseline; WebXR external content uses [#9](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/9)/[#28](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/28) as needed. Bundled content can proceed independently. |
-| S2 | Historical mentor showcase | [Add a grounded historical mentor that teaches from observed Matrix outcomes](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/6)<br>[Present mentors with interruptible speech, captions and optional 3D avatars](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/7) | [Matrix #23](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/23) mentor acceptance; [Matrix #13](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/13) **13A** + [Matrix #14](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/14) only for optional embodied finite actions. |
-| S3 | Interactive tools and creator flow | [Add a replaceable interactive lesson-panel adapter with feedback to the mentor](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/8)<br>[Add reusable parameterized experiment capabilities for interactive exhibits](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/32) | [Matrix #28](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/28) guided local publish/delivery, then catalog orchestration; [Matrix #9](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/9) category adapters. |
-| S4 | World's Fair and facilitation | [Build a World's Fair exhibit library with VR visits and AR placement](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/9)<br>[Support a PC facilitator and headset learner with shared status and clear control](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/10) | [Matrix #22](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/22) **22A** for Quest 3 room acceptance; [Matrix #26](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/26) only for physical-image-dependent experiences. |
-| S5 | Adaptive/shared expansion | [Connect adaptive curricula, learner knowledge and course materials to reusable exhibits](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/11)<br>[Evaluate multiheadset shared learning and choose a bounded networking design](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/12) | [Matrix #29](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/29) optional generic NPC autonomy remains independently useful and outside the first teaching loop. |
+```text
+School request -> Matrix reviewed world action -> observed result -> School explanation
+```
 
-S0–S5 are School experience milestones, not an ecosystem-wide dependency chain. Six repository milestones match S0–S5. They have no invented deadlines. Milestones organize product issues; capabilities in other repositories keep their own ownership. The epic spans phases and has no artificial due date.
+No third canonical world state or learner state.
 
-## First work to pull
+## Next
 
-1. **School reuse audit**: compare beta/v2/Matrix with a real representative journey and decide which School modules to retain/adapt. Obtain user feedback on that demonstrated result.
-2. **Matrix API contract audit and deterministic sample client**: can start alongside the reuse audit. Actual School-site pairing and full integration acceptance wait for the selected adapter/deployment path.
-3. **Existing Matrix Web baseline acceptance**: use #8 for image/voice gaps, #9/#28 for needed WebXR content/restart recovery, and #24 for exact WebXR release/runbook work. Matrix's own [implementation plan](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/IMPLEMENTATION_PLAN.md) and #122 select its active Creator Mode work. Closed native #21 is historical evidence.
-4. **Text-first standalone School slice**, with optional replaceable voice/visual adapters. Then **prepared lesson package + connector** and **headset answer controls**. Complete the authored scale lesson before requiring open-ended mentoring.
-5. **Grounded mentor + presentation**; prove one unanticipated but supported question. Add richer tools based on observed lesson needs.
+- reuse Matrix interactive worlds/exhibits from School;
+- use optional character embodiment where it adds value;
+- let AI Citizens exist independently from School mentors;
+- connect Manfred only for specific consented human-context features;
+- evaluate shared/multiplayer experiences when a demonstrated use case needs them.
 
-These are School integration pulls, not a second Matrix implementation queue or a demand to complete every provider or coursework release before a bundled lesson can run. Physical-camera hardware, advanced NPCs, and external asset-provider automation are separate tracks.
+## Later
 
-## Optional AI NPC community research track
+- larger inhabited Matrix worlds;
+- adaptive/shared School experiences;
+- broad cross-world networking;
+- richer human/AI continuity across devices.
 
-This track can proceed alongside the ordered School lesson phases. It belongs to the AI Citizens module, uses a world adapter for Core observations/actions, and feeds the existing [Matrix NPC roadmap #29](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/29). It does not change S0–S5 exit gates or add an NPC dependency to the first teaching loop. See the [research review](RESEARCH-AI-NPC-COMMUNITY.md) and [consolidated resource index](RESOURCES.md).
+## Planning rule
 
-| Step | Outcome and gate | Issue / owner |
-| --- | --- | --- |
-| C0 — research reproduction | Reproduce a small seeded SwarmWorld fixture and compare scripted, isolated-skill and shared-artifact residents with matched budgets; publish traces, metrics and limits. | [Roadmap #14](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/14) evaluates; [Matrix #29](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/29) receives findings. |
-| C0b — shared-world model appraisal | Review [Odyssey Agora-2](https://odyssey.systems/introducing-agora-2) and its [technical report](https://agora-2.odyssey.systems/agora-2.pdf); if preview access permits, check shared state, object persistence, action following, view agreement, latency and reproducibility. Record vendor claims separately from observed results. | [Roadmap #14](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/14) records research; Matrix #29 remains the implementation owner. No learned-world dependency is added. |
-| C1 — bounded Matrix slice | If C0 merits it, specify and implement two persistent residents, one discoverable validated artifact, one contended object, observed receipts and replay using existing Matrix #13–#20 contracts. For visible characters, evaluate the Quaternius clip library and a small authored/generated motion through Matrix #14's WebXR rig/GLB, license, action-outcome and Quest gates. | Matrix #29 and its existing implementation issues own runtime work; create a scoped Matrix implementation issue only if an uncovered capability is found. |
-| C2 — policy comparison | Compare fixed-priority FSM, seeded-utility FSM and FSM with Jev on the same legal transition set and replayed events. Include a slow strategic plan plus faster local choice only as a measured variant; report coherence, state thrashing, call scaling, stale plans and outage fallback before adopting any role. | [Roadmap #15](https://github.com/School-of-the-Ancients/school-of-the-ancients-roadmap/issues/15) evaluates; Matrix #29 owns any integration. |
-| C3 — human-facing scene | Demonstrate a small inhabited quest hub in the desktop Web runtime: compare an authored Halo-style state-machine resident, grounded dialogue, and bounded routine choices; keep required quest access and rewards authoritative. Then measure Quest 3 WebXR separately before claiming headset readiness. | Matrix #29 owns further runtime acceptance; closed #20 retains historical persistence/budget evidence. |
+Product roadmaps win:
 
-No date or phase milestone is assigned while C0 and C2 remain unmeasured.
+- Matrix work -> Matrix `ROADMAP.md` + Matrix issues.
+- School work -> School repo/issues.
+- Cross-product integration/research -> this repository.
 
-## Dependency rules
-
-- School's standalone browser/text/voice experience and Matrix's standalone Operator must keep working if the connector or the other product is unavailable.
-- S0's integrated exit requires the actual School deployment → paired local Matrix → reviewed action → observed receipt path. Local fixtures alone do not meet that gate.
-- Contracts and fixtures can be built concurrently; dependent implementation waits only for the capability it consumes.
-- Matrix **13A/13B** and **22A/22B** are sections of existing issues, not new issue numbers. Finite character actions need 13A; general behavior programs need 13B; final Quest 3 room placement needs 22A; room-aware NPC navigation needs 22B. An open parent issue does not imply all accepted subcapabilities are blocked.
-- Use a portrait/caption/voice mentor before requiring rigs. Basic teaching dialogue does not depend on needs, GOAP, multi-NPC behavior or NPC memory.
-- Capture is optional unless the lesson declares it required. Archived Quest Pro native virtual captures do not contain real-room pixels and cannot establish WebXR capture acceptance. Quest 3 WebXR physical-image-dependent features need their own #26 device evidence. Room anchors do not require camera imagery.
-- External-pack lessons require exact dependency registration and restore; a bundled-prop lesson can proceed while broader catalog adapters remain unfinished.
-- Interactive panels and experiment capabilities have independent contracts. Integrate one useful pair after each is accepted, rather than force an engine-wide rewrite.
-
-## Reuse map across the organization
-
-Existing issues retain implementation ownership. The board includes relevant reference work so the reuse audit can select it, not because every old backlog item is newly mandatory.
-
-| Workstream | Existing authoritative or candidate issues | Decision |
-| --- | --- | --- |
-| Matrix Web foundations | [Matrix #122](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/122), [#12](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/12), [#8](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/8), [#9](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/9), [#22](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/22), [#24](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/24), [#25](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/25), [#26](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/26), [#28](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/28); closed [#21](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/21) is native history | Matrix's own plan orders runtime work; reuse accepted Web capabilities without duplicating loaders/capture/executors or treating archived Unity evidence as WebXR acceptance |
-| Character Body and AI Citizens (separate modules) | [Matrix #29](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/29), [#13](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/13), [#14](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/14), [#15](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/15), [#16](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/16), [#17](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/17), [#18](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/18), [#19](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/19); closed [#20](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/20) records prior evidence | Body owns finite embodiment; Citizens owns policy/memory; both consume Core contracts |
-| Existing authored lesson | [Matrix #23](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/23) | Extend tested desktop integration into independent-product/headset acceptance |
-| Beta conversation, visuals, voice | [beta #104](https://github.com/School-of-the-Ancients/sota-beta/issues/104), [beta #106](https://github.com/School-of-the-Ancients/sota-beta/issues/106), [beta #108](https://github.com/School-of-the-Ancients/sota-beta/issues/108), [beta #119](https://github.com/School-of-the-Ancients/sota-beta/issues/119), [beta #122](https://github.com/School-of-the-Ancients/sota-beta/issues/122), [beta #163](https://github.com/School-of-the-Ancients/sota-beta/issues/163) | Preserve product feel; validate/fix observed defects rather than assume current behavior |
-| Beta curriculum, content, knowledge | [beta #112](https://github.com/School-of-the-Ancients/sota-beta/issues/112), [beta #113](https://github.com/School-of-the-Ancients/sota-beta/issues/113), [beta #114](https://github.com/School-of-the-Ancients/sota-beta/issues/114), [beta #118](https://github.com/School-of-the-Ancients/sota-beta/issues/118), [beta #120](https://github.com/School-of-the-Ancients/sota-beta/issues/120), [beta #253](https://github.com/School-of-the-Ancients/sota-beta/issues/253), [beta #254](https://github.com/School-of-the-Ancients/sota-beta/issues/254) | Candidate School implementation work; prioritize after reuse audit |
-| v2 reusable contracts/voice/templates | [v2 #23](https://github.com/School-of-the-Ancients/sota-v2/issues/23), [v2 #29](https://github.com/School-of-the-Ancients/sota-v2/issues/29), [v2 #30](https://github.com/School-of-the-Ancients/sota-v2/issues/30), [v2 #31](https://github.com/School-of-the-Ancients/sota-v2/issues/31) | Optional reuse; existing Matrix API compatibility is evidence, not a mandated v2 migration |
-| v2 artifacts/visuals | [v2 #27](https://github.com/School-of-the-Ancients/sota-v2/issues/27), [v2 #28](https://github.com/School-of-the-Ancients/sota-v2/issues/28), [v2 #65](https://github.com/School-of-the-Ancients/sota-v2/issues/65), [v2 #66](https://github.com/School-of-the-Ancients/sota-v2/issues/66), [v2 #67](https://github.com/School-of-the-Ancients/sota-v2/issues/67), [v2 #68](https://github.com/School-of-the-Ancients/sota-v2/issues/68), [v2 #69](https://github.com/School-of-the-Ancients/sota-v2/issues/69) | Compare with beta before implementing alternatives or a second artifact store |
-| v2 adaptive curriculum | [v2 #76](https://github.com/School-of-the-Ancients/sota-v2/issues/76) | Existing design/reference for later School curriculum, not first-lesson prerequisite |
-
-The [original beta rebuild requirement](https://github.com/School-of-the-Ancients/sota-beta/issues/252) already establishes a text-model learning core with STT/TTS adapters and explanation before Socratic questioning. [V2 #64](https://github.com/School-of-the-Ancients/sota-v2/issues/64) is an existing execution-plan reference, not a mandate to complete that remake.
-
-Beta's Study Oracle and learner-knowledge ideas, richer generated visuals, creator templates, and optional character autonomy remain part of the full idea. The plan starts with a complete lesson because it tests whether those capabilities improve learning instead of accumulating disconnected features.
-
-## Research references for agent experiences
-
-These are design references for the School mentor and Matrix's optional character/simulation track, especially [Matrix #29](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/29). They do not add implementation gates to the first prepared lesson. Evaluate their ideas against learner value, observed behavior, and the independent-product boundary before adopting an architecture.
-
-- **[TypeSafe AI documentation](https://docs.typesafe.ai/introduction)** — Typed Choice, Score, and truth-value questions over state, with confidence information. Reference for bounded agent decisions and routing; it is not a selected dependency.
-- **[Generative Agents: Interactive Simulacra of Human Behavior](https://arxiv.org/pdf/2304.03442)** — Core vision reference for a living world of believable, interacting characters. Study its memory stream, reflection, retrieval, and planning mechanisms, then test which of them improve a historical mentor or exhibit.
-- **[Simile](https://www.simile.com/) and its [research/blog](https://www.simile.com/blog)** — References for human-behavior simulation and validation. Related reading: [Social Simulacra](https://arxiv.org/abs/2208.04024), [Generative Agent Simulations of 1,000 People](https://arxiv.org/abs/2411.10109), [Finetuning LLMs for Human Behavior Prediction in Social Science Experiments](https://arxiv.org/abs/2509.05830), and [Building confidence in Simile](https://www.simile.com/blog/confidence). Use these to frame behavioral fidelity and evaluation, not to assume simulated people are accurate by appearance alone.
-- **[MiroFish](https://github.com/666ghj/MiroFish)** — Open-source multi-agent simulation reference for turning seed material into an agent population, running interactions, and inspecting the resulting world and reports. Study its world setup, memory, and simulation workflow.
-- **[ChatDev](https://github.com/OpenBMB/ChatDev) and [ChatDev: Communicative Agents for Software Development](https://arxiv.org/pdf/2307.07924)** — References for agent roles, structured communication, handoffs, and workflow orchestration. The paper describes the original virtual software company; the repository also contains the newer ChatDev 2.0 platform.
-
-### AI NPC community additions from this conversation
-
-- **Persistent resident community:** [SwarmWorld paper](https://arxiv.org/abs/2608.26081), [code](https://github.com/lamm-mit/SwarmWorld), [architecture](https://github.com/lamm-mit/SwarmWorld/blob/main/docs/ARCHITECTURE.md) and [dataset](https://huggingface.co/datasets/lamm-mit/swarmworld-data) inform the seeded shared-artifact versus isolated-agent comparison in C0. [Voyager paper](https://arxiv.org/pdf/2305.16291) and [code](https://github.com/MineDojo/Voyager) inform personal skill libraries and outcome checks. Buehler's in-submission computational-laboratory work has a [public archive](https://huggingface.co/lamm-mit/MetaMaterialsDiscovery/blob/main/README.md), but no reviewed public manuscript or physical validation was established; use it to frame bounded instruments and independent artifact validation.
-- **NPC control:** [Halo: Combat Evolved's GDC AI talk](https://halo.bungie.org/misc/gdc.2002.haloai/talk.html) supplies the authored finite-state baseline. At optional transitions, test fixed priority, seeded utility and Diogo Almeida / TypeSafe AI's [Jev Choice](https://docs.typesafe.ai/primitives/choice) over the same legal actions; the [Jev announcement](https://typesafe.ai/blog/introducing-system-one-models-and-jev) and [limitations](https://docs.typesafe.ai/model-jaggedness/jev-1.13) are research inputs. The user-reported StarCraft II setup uses one Astra plan before a fight and separate Jev decisions for squads/key units about twice per second. Treat that cadence and the slow-plan/fast-choice design as unverified hypotheses; the exact primary demonstration and run data remain unverified.
-- **Inhabited quest hub:** The World of Warcraft-inspired idea is a fictional Matrix scene where a quest giver can remember interactions and wander without hiding a required quest. [Blizzard Follower Dungeons](https://news.blizzard.com/en-gb/article/24054790/take-the-lead-in-follower-dungeons), [Fortnite LLM conversations](https://www.fortnite.com/news/publish-islands-with-llm-conversations-starting-july-30) and [Ubisoft NEO NPC](https://news.ubisoft.com/en-gb/article/5qXdxhshJBXoanFZApdG3L/how-ubisofts-new-generative-ai-prototype-changes-the-narrative-for-npcs) are comparison points for authored behavior, grounded dialogue, latency and quest authority, not evidence that all existing game NPCs are generative.
-- **Motion for visible residents:** [Quaternius Universal Animation Library](https://quaternius.com/packs/universalanimationlibrary.html), the [Defold 3D animation example](https://defold.com/llms/examples/animation/3d_animations/) and the [current Quaternius license](https://quaternius.com/license.html) inform clip/rig/license evaluation. Serhat Akgül's [Rigipo Studio](https://rigipo.com/download/), [Fab listing](https://www.fab.com/listings/5d79abf2-ac69-4372-be7d-644c0dd97da5) and [creator demonstration](https://www.reddit.com/r/UnrealEngine5/comments/1wn7oht/i_made_a_texttoanimation_plugin_for_ue5_that_runs/) are an offline, no-API UE5 text-to-animation lead with creator-reported humanoid retargeting and looping; export into a licensed WebRuntime-compatible GLB/clip remains untested. The user-supplied Astra stick-figure sequence to Blender workflow is a one-motion authoring experiment, not an accepted runtime dependency.
-- **Shared-world model comparator:** [Odyssey](https://odyssey.systems/), its [Agora-2 announcement](https://odyssey.systems/introducing-agora-2), [technical report](https://agora-2.odyssey.systems/agora-2.pdf), [preview](https://agora.odyssey.systems/), [Odyssey-3](https://odyssey.systems/introducing-odyssey-3) and [PROWL](https://arxiv.org/abs/2605.18803) inform C0b's shared-state and failure-finding appraisal. The report and preview still need direct evaluation; no Matrix WebXR integration or Quest readiness follows from the announcement.
-
-The [source index](RESOURCES.md) records direct links and evidence limits, and the [research review](RESEARCH-AI-NPC-COMMUNITY.md) details architecture, metrics and ownership. All adopted runtime work remains under the existing [Matrix NPC roadmap #29](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/29).
-
-## Kanban policy
-
-The organization Project has **Backlog → Ready → In progress → In review → Done**, plus **Blocked**.
-
-- **Backlog:** recorded work; dependencies and approach may still need decisions. Imported old issues are not automatically active.
-- **Ready:** a scoped next step has clear acceptance and can be pulled. A large parent issue must identify which slice is ready.
-- **In progress:** work is actually underway; work-in-progress limit 3. Status is not inferred from old branches or historical linked PRs.
-- **In review:** a reviewable PR/artifact and validation evidence are available.
-- **Blocked:** record the concrete blocker, owner/next action and what can proceed independently. Lack of hardware blocks hardware acceptance, not all design/fixture work.
-- **Done:** required acceptance is recorded. A merged PR, screenshot, completed animation, or model claim alone cannot establish complete learning/device acceptance.
-
-Issue bodies identify module ownership and consumed interfaces as specified in MODULES.md. Keep one organization board with module-scoped views as the target; no new board fields/views are claimed by this documentation change. Existing issue labels express area, priority and S0–S5 School phase. Product milestones organize the new roadmap repository; existing v2 milestones are preserved. Dates stay unset until scope/dependencies and actual course requirements are confirmed. Use the Roadmap view for sequencing, not fabricated calendar commitments.
-
-## Pull request and release policy
-
-Keep runtime changes in their product repositories. Each PR names the contract/capability or issue slice it implements and verifies that the other product can be absent. Do not close umbrella issues while acceptance remains. Cross-product changes identify compatible versions and use contract fixtures before end-to-end checks.
-
-Matrix #24 owns new Three.js/WebXR release and coursework artifacts, checksums, version identity and validation evidence. Preserve earlier APK/service releases unchanged as historical Unity evidence. Lesson packages record exact content/mentor/source versions; a reproducible exhibit includes the selected School build/adapter, Matrix Web build, package and setup instructions. Course dates and reuse permission remain constraints to verify, not promises in this roadmap.
-
-## Evidence before a showcase
-
-One actual learner completes predict → manipulate → observed result → mentor explanation → reflection → save/restart/resume. Include an unexpected supported question, model/voice failure fallback, connection loss and an unconfirmed command. A formative pilot with at least three unfamiliar users records setup assistance and learning/UX failures. Measure latency/frame time and independently score a transfer question; do not treat participation as mastery or a small pilot as efficacy proof.
-
-No runtime implementation, live-service restart, device installation, or repository migration is performed by this planning work.
+Do not recreate a global dependency tree for every issue.
