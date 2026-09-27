@@ -1,8 +1,8 @@
 # School of the Ancients: modular spatial learning
 
-Status: proposed implementation plan, September 22, 2026. No new runtime features are claimed by this document.
+Status: School experience proposal begun September 22, 2026; Matrix integration direction aligned with PRs #124 and #131 on September 26. No new runtime features are claimed by this document. Matrix's [vision](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/VISION.md), [PRD](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/PRD.md), [implementation plan](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/IMPLEMENTATION_PLAN.md), [project map](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/PROJECTS.md) and [#122](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/122) own its current product direction and acceptance.
 
-**Product:** historical AI mentors teach through conversation, prepared interactive exhibits, and responsive visual explanations in AR, VR, and a companion browser. Build on the working Matrix Loading Operator. Preserve the useful ideas and compelling moments of `sota-beta` while improving its implementation.
+**Product:** historical AI mentors teach through conversation, prepared interactive exhibits, and responsive visual explanations in AR, VR, and a companion browser. Build on the existing Matrix Three.js/WebXR runtime through an optional connector; keep School independently usable. Preserve the useful ideas and compelling moments of `sota-beta` while improving its implementation.
 
 [Organization Kanban](https://github.com/orgs/School-of-the-Ancients/projects/1) · [Delivery plan](ROADMAP.md) · [API proposal](API-CONTRACT.md) · [Current Matrix guide](https://github.com/School-of-the-Ancients/matrix-loading-operator#readme)
 
@@ -16,7 +16,7 @@ The optional connector uses versioned capabilities, requests and observed receip
 
 ## Product decisions from this conversation
 
-- Matrix Operator is the spatial foundation to extend. Its scene editing, voice commands, content loading, screenshots, Undo, and save/restore remain useful independently of education.
+- Matrix Operator is the spatial foundation to extend. The existing WebRuntime's scene editing, reviewed actions, content, receipts and save/restore remain useful independently of education; voice and capture need capability-specific WebXR and device evidence.
 - The user sees **good ideas in the older sota-beta prototype, implemented poorly; v2 did not deliver the desired improvement**. Preserve those ideas, not the Google live-voice coupling or every implementation detail. A fresh School implementation is a valid option, alongside selective reuse. Prove a small text-first standalone journey before committing to a broad rebuild or migration.
 - Everything should be modular: content, lessons, mentor identity, teaching policy, voice, character presentation, scene tools, panels, capture, and world navigation.
 - Prepare the required lesson assets in advance for the first experience. The mentor can recombine supported tools and assets when a student asks a follow-up question.
@@ -51,19 +51,19 @@ This activity teaches geometry and measurement. It does not imply mass/physics s
 
 ## Current foundation versus planned work
 
-Inspected Matrix baseline: [`adde51a`](https://github.com/School-of-the-Ancients/matrix-loading-operator/commit/adde51a6ae6499e255ecdc00970cf8105dc8839a), including merged PRs #27 and #30. These are repository observations, not new live-service or headset tests.
+The original September 22 baseline was [`adde51a`](https://github.com/School-of-the-Ancients/matrix-loading-operator/commit/adde51a6ae6499e255ecdc00970cf8105dc8839a), including merged PRs #27 and #30. It is dated evidence, not the present runtime target. Matrix later merged [PR #124](https://github.com/School-of-the-Ancients/matrix-loading-operator/pull/124) to restore its creation/learning vision and [PR #131](https://github.com/School-of-the-Ancients/matrix-loading-operator/pull/131) to archive Unity as read-only source. New runtime and coursework work uses the existing WebRuntime. These repository observations are not new live-service or headset tests.
 
 | Area | Existing evidence | Remaining product work |
 | --- | --- | --- |
-| Matrix runtime | Typed scene edits, stable identities, placement, Rotate/Bob, Undo, saves, PC/headset control | Generic external-session API/status; School owns lesson selection and teaching UI |
-| Content | Static prefab export/catalog/download/registration; actual Quest Pro same-session walkthrough | Simpler authoring, startup dependency registration, cached cold-restart acceptance; new content types need adapters |
-| Voice | Push-to-talk and transcription into reviewed scene proposals | Explicit answer/question/scene-command routing and mentor speech |
-| Learning | Authored scale activity and durable checkpoint/receipt API integrated with v2; desktop loop evidence | Headset learner input, tutor conversation, complete device lesson; target learning implementation to be selected |
-| Capture | Explicit virtual image paired with scene state; candidate Quest 3 camera composition | Lesson-turn evidence binding and outstanding hardware acceptance |
-| Characters | Historical prompts/FBX props in earlier Horizon repo; generic NPC roadmap exists | Rig/material validation, presentation bindings, finite character actions |
-| Reconnect | PR #30 merged; updated service supplies button and correct-port guidance | Exact deployed service and end-to-end recovery acceptance |
+| Matrix Web runtime | Existing Three.js/WebXR world, typed scene edits, stable identities, reviewed operations, receipts and browser persistence | School pairing/status, actual WebXR lesson controls and wearer acceptance remain separate gates |
+| Content | WebRuntime GLB catalog, registration and animation are current; native prefab export/catalog and Quest Pro walkthrough are archived evidence | Simpler WebXR authoring, exact startup registration and cached cold-restart acceptance for the selected package; new content types need adapters |
+| Voice | Earlier push-to-talk and transcription into reviewed scene proposals; current Web voice paths require capability-specific verification | Explicit answer/question/scene-command routing and mentor speech |
+| Learning | Authored scale activity, durable checkpoint/receipt work and the existing standalone School application | WebXR learner input, paired tutor conversation and complete device lesson |
+| Capture | Archived native virtual images and candidate Quest 3 camera composition; WebXR capture has its own capability limits | Lesson-turn evidence binding and direct WebXR hardware acceptance where an image is required |
+| Characters | Historical prompts/FBX props in earlier Horizon repo; WebRuntime has GLB animation and Citizens work | WebXR rig/material validation, presentation bindings and finite action outcomes |
+| Reconnect | Earlier PR #30 added native/service guidance; current WebRuntime has its own checkpoints and recovery | Exact deployed Web service and end-to-end School recovery acceptance |
 
-Read Matrix's [Learning-Sessions](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/Docs/Learning-Sessions.md), [Visual-Feedback](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/Docs/Visual-Feedback.md), [Content-Packs](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/Docs/Content-Packs.md), and relevant validation reports for evidence boundaries. Quest Pro capture is virtual content/debug geometry, not physical-room pixels. Quest 3 camera code has not established hardware acceptance. Stored room geometry, camera imagery, and live depth/occlusion are separate capabilities.
+Read Matrix's [Learning-Sessions](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/Docs/Learning-Sessions.md), [Visual-Feedback](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/Docs/Visual-Feedback.md), [WebXR runtime packages](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/Docs/WebXR-Runtime-Packages.md), [Quest 3 acceptance](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/WebRuntime/QUEST3_ACCEPTANCE.md), historical [native content packs](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/Docs/Content-Packs.md), and relevant validation reports for evidence boundaries. Archived Quest Pro capture was virtual content/debug geometry, not physical-room pixels; it does not establish WebXR capture acceptance. Stored room geometry, camera imagery, and live depth/occlusion are separate capabilities.
 
 ## Preserve the useful ideas; choose a better School foundation
 
@@ -71,7 +71,7 @@ The first decision gate compares the same user journey in beta, v2, and Matrix: 
 
 The decision must identify modules to **keep, adapt, repair, or retire**, with a reversible integration slice. Possible outcomes include extending beta through a learning adapter, extracting a useful existing service, or reusing selected v2 contracts. A new repository is justified only by independent ownership/build/release needs. The user is open to starting School fresh; the decision should follow the demonstrated slice, not the age/name of the repository alone. Matrix stays the existing independent product.
 
-Matrix's current `learning.py` integration and v2 durable API are reusable evidence. Their existence does not mandate v2 as the future application. After selection, one learning implementation owns session and assessment state; adapters must not create competing progress stores. Existing saved records need explicit versioned conversion or continued support before any backend migration.
+Matrix's earlier `learning.py` integration and v2 durable API are reusable evidence. Their existence does not mandate v2 as the future application. The existing standalone School application is the implementation candidate to extend and audit. One learning implementation owns session and assessment state; adapters must not create competing progress stores. Existing saved records need explicit versioned conversion or continued support before any backend migration.
 
 ## Text-first School core; voice is an adapter
 
@@ -92,11 +92,11 @@ Start with modules in existing repositories/processes. Modularity does not requi
 | Mentor teaching/orchestration | Dialogue, next question, explanation, typed demonstration requests | Cannot directly mutate scene or award mastery; consumes observed evidence |
 | Matrix scene tools | Proposals, review, commands, actual runtime receipts, Undo | Existing executor remains scene authority; unknown tools unavailable |
 | Optional cross-product connector | School answers/turns correlated with Matrix selections, manipulation outcomes and captures | Each product keeps authority over its domain; bounded retries and no third canonical progress store |
-| Content/catalog adapter | Discovery, exact versions, validation, cache, runtime installation | Reuse #9/#21/#28; unavailable content is explicit; no arbitrary downloaded C# |
+| Content/catalog adapter | Discovery, exact versions, validation, cache, runtime installation | Reuse WebXR #9/#28; closed #21 is native history. Unavailable content is explicit; no arbitrary downloaded executable code |
 | Exhibit package | Lesson reference, start scene, source refs, capability/content requirements | Reuse supported assets; fail preflight before partially replacing a scene |
 | Voice adapters | STT, transcript correction, TTS, playback/interrupt | Captions/text remain available; provider keys stay on the server/PC |
 | Mentor presentation | Portrait, captions, optional avatar/lip-sync/gesture bindings | Missing avatar does not break dialogue; consume #13A/#14 for finite character actions |
-| Visual artifact renderer | Diagrams, controls, interactive lesson panels | Native, browser, or texture adapters selected by measured prototype; renderer-neutral events |
+| Visual artifact renderer | Diagrams, controls, interactive lesson panels | HTML, Three.js and WebXR presentations over shared experiment state; renderer-neutral events |
 | Observation/capture | Precise scene observations plus optional explicit image | Honest provenance, timestamps, supported devices, stale-context handling |
 | Experiment capability | One tested parameterized teaching interaction | Deterministic/measured outcomes, bounded parameters, reset; no fabricated physics results |
 | World navigation | Exhibit discovery, VR pavilion/AR placement, return/resume | No mandatory NPC autonomy or multiuser networking |
@@ -121,7 +121,7 @@ flowchart LR
     Learning <--> Mentor[School mentor teaching module]
     Mentor <--> Bridge[Versioned optional API connector]
     Bridge --> Proposal[Matrix reviewed proposal]
-    Proposal --> Runtime[Existing Unity runtime]
+    Proposal --> Runtime[Existing Matrix WebRuntime]
     Runtime --> Evidence[Receipts and observations]
     Evidence --> Bridge
     Bridge --> Learning
@@ -147,7 +147,7 @@ Use a graduated response to an unexpected student question:
 3. Offer an approved compatible cached/catalog asset through #28, with visible preparation/registration status and fresh placement review.
 4. If a new compiled capability is needed, explain the limit and queue creator/developer work; do not pretend an asset URL supplies a runnable script.
 
-The learner should see **Choose lesson → Prepare → Start / Resume**, not provider manifests or Unity export stages. Creators get a separate guided **Publish to Matrix** workflow through #28, with preview, compatibility report, exact exported package, and installation acknowledgment. Advanced configuration remains available outside the learner path.
+The learner should see **Choose lesson → Prepare → Start / Resume**, without provider manifests, asset registration details or port selection. Creators get a separate guided **Publish to Matrix Web** workflow through #28, with preview, compatibility report, exact WebXR-compatible package and runtime registration acknowledgment. Advanced configuration remains available outside the learner path.
 
 Marinara's character/visual-artifact design inspires generated explanations; it is not a verified drop-in Quest HTML runtime. Its current sanitized chat rendering does not by itself establish arbitrary JavaScript execution or tutor feedback from widgets. Prototype one event-producing lesson panel before selecting a renderer. Ryo Suzuki's projects inspire equation manipulation, parameter experiments, and teachable physical interactions; implement concrete capabilities rather than assuming the papers provide a universal engine.
 
@@ -167,14 +167,14 @@ Detailed issue dependencies and status rules live in the [delivery plan](ROADMAP
 ### Evidence required before claiming a milestone
 
 - Contract tests: version mismatches, unavailable optional modules, duplicate/out-of-order events, cancellation, failed/unconfirmed commands, stale capture, and interrupted restore.
-- Integration: actual selected learning implementation + Matrix PC service + built desktop player. Preserve existing proposal/Undo/content/save workflows.
+- Integration: actual School implementation + Matrix PC service + desktop WebRuntime build. Preserve existing proposal/Undo/content/save workflows.
 - Live mentor: correct and incorrect answers, misconception, unexpected supported question, unsupported request, missing evidence, model outage. No success claim before a receipt/measurement; no invented mastery update.
 - Actual device: voice/input, readable panels/captions, focus/tracking loss, room alignment, recovery, resource/frame-time measurements, and saved lesson restore on the exact build.
-- Content: app restart → upstream provider unavailable → cached dependencies validated/registered → saved scene/lesson restored while the PC service remains reachable.
+- Content: WebRuntime/service restart → upstream provider unavailable → cached dependencies validated/registered → saved scene/lesson restored while the PC service remains reachable.
 - Usability: formative trial with at least three people unfamiliar with the setup. Record assistance, failure points, launch time, turn latency, and whether they complete the lesson without editing JSON/ports. Set performance budgets from baseline measurements; do not invent a pass threshold after the test.
 - Learning: separate participation, explanation quality, and an independently scored transfer question. A small pilot is evidence for iteration, not proof of educational efficacy.
 
-Desktop and Quest Pro can validate early lesson work. Quest 3 is the primary final room-aware target; #22A gates its room acceptance. #26 gates physical-image-dependent features only. Neither generic NPC navigation (#22B), needs, nor GOAP gates the first lesson.
+Desktop browser can validate early lesson work. Quest 3 WebXR is the primary immersive room-aware target; #22A gates its room acceptance, and #26 gates physical-image-dependent features only. Archived Quest Pro native results remain historical and do not validate the WebXR path. Neither generic NPC navigation (#22B), needs, nor GOAP gates the first lesson.
 
 ## Optional AI Citizens module
 
@@ -194,11 +194,11 @@ Acceptance for a community claim requires a comparison with scripted and isolate
 
 The full direction includes multiple mentors/exhibits, reusable authored and adaptive curricula, learner knowledge and uploaded course material, generated diagrams/backgrounds, shared teaching, and optional believable characters. Existing beta/v2/NPC issues own those capabilities where they fit; adoption follows the reuse decision.
 
-The first product does not require a Unity replacement, arbitrary runtime code, autonomous Asset Store acquisition, a new content marketplace, full NPC society, continuous camera streaming, or a multiplayer backend. New engine capabilities still require application development/builds. Compatible content and lesson data should be publishable without rebuilding the player once their required capabilities ship.
+The first School experience does not require arbitrary runtime code, autonomous asset acquisition, a new content marketplace, full NPC society, continuous camera streaming, or a multiplayer backend. Continue the existing Three.js/WebXR Matrix implementation; native Unity is a read-only archive. New WebRuntime capabilities still require reviewed application development and builds. Compatible content and lesson data should be publishable without rebuilding the Web client once their required capabilities ship.
 
 ## Repositories and source lineage
 
-- [Matrix Loading Operator](https://github.com/School-of-the-Ancients/matrix-loading-operator): independent spatial runtime/product; its own generic API and capability implementation issues remain there.
+- [Matrix Loading Operator](https://github.com/School-of-the-Ancients/matrix-loading-operator): independent Three.js/WebXR spatial runtime/product; its [current vision](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/VISION.md), [implementation plan](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/IMPLEMENTATION_PLAN.md) and [#122](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/122) own runtime priorities. [Archived Unity source](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/Archive/Unity/README.md) and native releases retain historical evidence.
 - [sota-beta](https://github.com/School-of-the-Ancients/sota-beta): prototype ideas/experience reference and candidate code to reuse selectively; inspect existing mentor, voice, visuals, quests, and persistence before replacing anything.
 - [sota-v2](https://github.com/School-of-the-Ancients/sota-v2): reusable candidate code/contracts; current Matrix learning adapter integrates its [Operator API](https://github.com/School-of-the-Ancients/sota-v2/blob/main/docs/OPERATOR_API.md). Its [beta experience spec](https://github.com/School-of-the-Ancients/sota-v2/blob/main/docs/FRONTEND_BETA_EXPERIENCE_SPEC.md) is research input, not a renewed mandate to rebuild beta.
 - [Earlier Horizon VR project](https://github.com/School-of-the-Ancients/school-of-the-ancients-vr): Cosmos-inspired fair, mentor prompts, props and models; Horizon TypeScript requires adaptation and FBX compatibility remains to be checked.
@@ -207,4 +207,4 @@ The first product does not require a Unity replacement, arbitrary runtime code, 
 
 ## Decisions to settle during implementation
 
-The early reuse audit decides the learning module home and integration seam with the user, using a demonstrated journey. The first lesson defaults to Observation and Scale; mentor identity, voice, and style remain replaceable data. Renderer choice follows a device prototype. Quest 3 access and coursework dates/reuse approval remain external constraints to verify through #24. Repository issue status or merged code never substitutes for runtime/device acceptance.
+The reuse audit tests the existing School implementation and selects its integration seam from a demonstrated journey. The first lesson defaults to Observation and Scale; mentor identity, voice, and style remain replaceable data. The Matrix runtime destination is Three.js/WebXR; specific HTML, Three.js and immersive presentations still require usable-device evidence. Quest 3 access and WebXR coursework dates/reuse approval remain external constraints to verify through #24. Repository issue status or merged code never substitutes for runtime/device acceptance.

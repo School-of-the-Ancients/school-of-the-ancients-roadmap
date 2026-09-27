@@ -2,6 +2,8 @@
 
 Updated September 24, 2026. This is the planning authority for module boundaries; it does not claim that code has already been extracted or accepted.
 
+Matrix's current implementation path is the existing [Three.js/WebXR runtime](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/PROJECTS.md); [Unity source](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/Archive/Unity/README.md) and native releases are read-only history after PR #131. This changes the destination for future runtime and coursework work, not the module ownership below. Matrix's [implementation plan](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/IMPLEMENTATION_PLAN.md) owns its active queue.
+
 ## Working model
 
 Build composable modules in the existing repositories. A module has one responsibility, owned state, a versioned interface, explicit dependencies, and an acceptance fixture. A module is not automatically a separate repository, service, deployment, or commercial product. School and Matrix remain independently usable experiences assembled from these modules.
@@ -14,11 +16,11 @@ Matrix determines what actually happens in the world. AI Citizens chooses reside
 | --- | --- | --- | --- |
 | `world-runtime` — Matrix Core | Scene/entity identity, authoritative world state, finite action execution, physics, cancellation, receipts, scene persistence | Generic actions and observations; no curriculum, resident planning, or lifelog logic | Existing Matrix runtime; deterministic action/receipt/save/restore fixture, without School or Citizens |
 | `operator` — Matrix Operator | Human voice/text construction intent, proposals, review/Apply UI, repair requests | Calls Core and Content contracts; does not own a second executor or resident mind | Existing Matrix service/UI; create → review → apply → undo with Citizens and School disabled |
-| `content` — Content and capabilities | Asset catalogs, exact versions, validation, preparation, runtime registration | Core installation interface; asset availability never implies executable capability availability | Existing Matrix catalog/import code; bundled and cached-pack cold restore |
+| `content` — Content and capabilities | Asset catalogs, exact versions, validation, preparation, runtime registration | Core installation interface; asset availability never implies executable capability availability | Existing Matrix Web catalog/import code; exact registration and cold restore in the selected WebXR runtime |
 | `spatial-presence` — Spatial alignment and presence | Room/geospatial coordinate mappings, anchor/relocalization adapters, AR/VR views and navigation modes | Core world identity; capability-specific device adapters; imagery and room geometry are separate | Existing Matrix spatial code; alignment/recovery fixture and explicit device acceptance. Remote/astral presence is later work |
 | `character-body` — Character embodiment | Avatar/rig bindings, animation, navigation and finite object interactions | Core executor; optional Content and Spatial adapters | Existing Matrix character code/issues; one commanded wave and one observed interaction without needs, memory or GOAP |
 | `ai-citizens` — AI Citizens / Simulacra | Resident identity/card, beliefs and memories, needs, schedules, utility/GOAP policy, dialogue, relationships, simulation checkpoints | Bounded observations and action requests through a world adapter; Body only for embodied delivery | Initially a module in Matrix's existing repository; isolated fixture first, then two residents with contention, save/restore and replay; School absent |
-| `school` — School learning | Historical mentor interpretation/source profile, teaching policy, lessons, assessment, learner records | Text/model adapter; optional world connector and presentation; Citizens is optional | Selected beta/v2/fresh School implementation after the existing audit; text lesson saves/resumes with Matrix, voice and Citizens absent |
+| `school` — School learning | Historical mentor interpretation/source profile, teaching policy, lessons, assessment, learner records | Text/model adapter; optional world connector and presentation; Citizens is optional | Existing text-first School application, with beta/v2 as reuse references; text lesson saves/resumes with Matrix, voice and Citizens absent |
 | `human-interface` — Manfred | Personal lifelog ingestion, wearable input, consented context and human-state observations | Device/ingestion adapters; optional bounded world connector; private data remains separately owned | Existing Manfred codebase; capture → durable ingest fixture with School/Matrix absent; exact code paths to be audited before implementation |
 | `integration` — Contracts and connectors | Capability negotiation, pairing, opaque ID correlation, compatibility, reconnect and error translation | Only the interfaces of enabled modules; no third authoritative world, resident or learner store | Adapters in existing processes; sample clients, missing-module/version mismatch fixtures and selected real end-to-end round trips |
 
@@ -30,7 +32,7 @@ Demerzel/local compute supplies replaceable inference and job infrastructure. It
 
 | Experience | Modules composed | Remains optional |
 | --- | --- | --- |
-| Matrix creative tool | Core + Operator + installed Content | School, Citizens, physical-camera capture |
+| Matrix Web creative tool | Core + Operator + installed Content | School, Citizens, physical-camera capture |
 | Standalone School | School + text/model and visual adapters | Matrix, Citizens, voice, headset |
 | Embodied lesson | School + Integration + Core + exhibit Content | Body, Citizens, physical-room placement |
 | Inhabited world | Core + Citizens + Body + world Content | School, Manfred; Spatial when room alignment is needed |
@@ -55,12 +57,12 @@ Repository location is a code/tracking home, not the module boundary. Existing i
 
 | Module / slice | Existing tracking |
 | --- | --- |
-| Core and foundation coordination | Matrix #12; executor/state #13A, optional programs #13B; acknowledged repair results #25; build/device evidence #24 |
+| Core and foundation coordination | Matrix #122 owns current Creator Mode acceptance; #12 and executor/state #13A, optional programs #13B remain capability owners; #25 owns acknowledged repair results; #24 owns WebXR release/device evidence |
 | Operator | Matrix #12/#8 and proposal/repair portions of #25; discovery UI portion of #28 |
-| Content | Matrix #9/#21/#28 |
+| Content | Matrix #9/#28; closed #21 preserves unfinished native pack history, not a WebXR dependency |
 | Spatial Presence | Matrix #22A/#26; #22B is the Body–Spatial integration slice |
 | Character Body | Matrix #14/#15, sharing Core #13A; integration portion of #22B |
-| AI Citizens | Matrix #29 coordinates #16–#20; Roadmap #14/#15 own community/policy evaluation; #29 links Body dependencies without owning Core execution |
+| AI Citizens | Matrix #29 coordinates #16–#19 and remaining runtime acceptance; closed #20 records prior persistence/budget work; Roadmap #14/#15/#18 own policy/community evaluation; #29 links Body dependencies without owning Core execution |
 | School | Roadmap #2/#6/#11/#13; teaching and lesson portions of #3/#5/#7/#8/#9 |
 | Integration and presentation | Roadmap #4/#10/#12; input/presentation portions of #5/#7/#8; Matrix #31 contracts, #23 lesson acceptance, #32 reusable experiment actions |
 | World/exhibit packages | Roadmap #3/#9; underlying generic Content remains reusable |
