@@ -1,48 +1,15 @@
-# Cross-project roadmap
+# Product roadmap index
 
-This file coordinates products; it does not select Matrix implementation work.
+School and Civilization are independent experiences using Matrix capabilities. There is no required School → society → Boulder delivery chain.
 
-## Now
+| Product | Follow this queue | Integration boundary |
+| --- | --- | --- |
+| **Matrix Loading Operator** | [Matrix roadmap](https://github.com/School-of-the-Ancients/matrix-loading-operator/blob/main/ROADMAP.md) and its selected issue | Shared creation/presentation tools, world execution, interaction and generic WebXR access. |
+| **School of the Ancients** | [School roadmap](https://github.com/School-of-the-Ancients/school-of-the-ancients/blob/main/ROADMAP.md), [School #7](https://github.com/School-of-the-Ancients/school-of-the-ancients/issues/7) and [Matrix integration #187](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/187) | Historical-mind conversation asks Matrix to show something, then responds to the observed result. The existing lesson is a reference integration. |
+| **Civilization** | [#29](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/29), with [#20](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/20)/[#148](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/148) for persistence/hosting and [#179](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/179)/[#180](https://github.com/School-of-the-Ancients/matrix-loading-operator/issues/180) for geography/Boulder | Resident intentions and geographic data use Matrix's supported world capabilities. Code remains in Matrix pending a deliberate extraction decision. |
 
-### Matrix
+[MODULES.md](MODULES.md) owns the boundary definitions. This index does not duplicate release status, dates or detailed acceptance from product trackers.
 
-Follow the Matrix-owned roadmap and current issue. Current direction is the Three.js/WebXR world + Operator + AI Citizens architecture, with the creator loop being completed in Matrix itself.
+Select a small outcome within the product being developed. Shared Matrix changes belong in Matrix; School conversation/teaching changes belong in School; Civilization work stays in its current owning issues while its code remains in Matrix. Neither a School mentor nor a standalone Matrix session requires the society simulation.
 
-### School
-
-Keep the School product independently usable. Continue one useful mentor/lesson experience with optional Matrix exhibits rather than making School depend on the entire Matrix/Citizens roadmap.
-
-### Integration
-
-Keep the boundary narrow:
-
-```text
-School request -> Matrix reviewed world action -> observed result -> School explanation
-```
-
-No third canonical world state or learner state.
-
-## Next
-
-- reuse Matrix interactive worlds/exhibits from School;
-- use optional character embodiment where it adds value;
-- let AI Citizens exist independently from School mentors;
-- connect Manfred only for specific consented human-context features;
-- evaluate shared/multiplayer experiences when a demonstrated use case needs them.
-
-## Later
-
-- larger inhabited Matrix worlds;
-- adaptive/shared School experiences;
-- broad cross-world networking;
-- richer human/AI continuity across devices.
-
-## Planning rule
-
-Product roadmaps win:
-
-- Matrix work -> Matrix `ROADMAP.md` + Matrix issues.
-- School work -> School repo/issues.
-- Cross-product integration/research -> this repository.
-
-Do not recreate a global dependency tree for every issue.
+Keep research in [RESOURCES.md](RESOURCES.md) until it justifies a specific implementation task. Personal-context integration remains a separate, consented Manfred concern. Update existing owners rather than adding a new global backlog.
